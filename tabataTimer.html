@@ -12,6 +12,8 @@
     <button class="redSecRBtn" type="button">&lt;&lt;</button><input class="timerR" type="number" value="10"><button class="addSecRBtn" type="button">&gt;&gt;</button>
     <button class="startApp" type="button">Start</button>
     <div id="box"> </div>
+    <br>
+    <div id="boxTimerAll"></div>
 
     <script>
         var secondsAll = 0;
@@ -43,6 +45,17 @@
             var secondsR = inputR.value;
             secondsW++;
             secondsR++;
+            var secondsAll = 25;
+
+            function counterAll() {
+                var showAll = document.getElementById("boxTimerAll");
+                secondsAll--;
+                showAll.innerHTML = String(secondsAll);
+                if (secondsAll > 0) {
+                    setTimeout(counterAll, 1000);
+                }
+            }
+            counterAll();
 
             function counterW() { //function who count seconds to 0 at workout time
                 var showS = document.getElementById("box");
@@ -51,14 +64,12 @@
                 if (secondsW > 0) {
                     setTimeout(counterW, 1000);
                 } else {
-                    if (secondsAll > 25) {
+                    if (secondsAll<=0) {
                         showS.innerHTML = "Koniec";
                     } else {
                         counterR(); // after workout time initiate a rest function
                         secondsW = inputW.value;
                         secondsW++;
-                        secondsAll += secondsW;
-                        secondsAll--;
                     }
                 }
             }
@@ -71,14 +82,12 @@
                 if (secondsR > 0) {
                     setTimeout(counterR, 1000);
                 } else {
-                    if (secondsAll > 25) {
+                    if (secondsAll<= 0) {
                         showS.innerHTML = "Koniec";
                     } else {
                         counterW();
                         secondsR = inputR.value;
                         secondsR++;
-                        secondsAll += secondsR;
-                        secondsAll--;
                     }
                 }
             }
