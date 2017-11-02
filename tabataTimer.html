@@ -11,6 +11,7 @@
     <button class="redSecWBtn" type="button">&lt;&lt;</button><input class="timerW" type="number" value="20"><button class="addSecWBtn" type="button">&gt;&gt;</button>
     <button class="redSecRBtn" type="button">&lt;&lt;</button><input class="timerR" type="number" value="10"><button class="addSecRBtn" type="button">&gt;&gt;</button>
     <button class="startApp" type="button">Start</button>
+    <div id="testBox"></div>
     <div id="box"> </div>
     <br>
     <div id="boxTimerAll"></div>
@@ -45,7 +46,21 @@
             var secondsR = inputR.value;
             secondsW++;
             secondsR++;
-            var secondsAll = 25;
+            var secondsAll = 240;
+            var secondsPrep = 6;
+
+            function counterPrep() {
+                var showS = document.getElementById("box");
+                secondsPrep--;
+                showS.innerHTML = String(secondsPrep);
+                if (secondsPrep > 0) {
+                    setTimeout(counterPrep, 1000);
+                } else {
+                    counterAll();
+                    counterW();
+                }
+            }
+            counterPrep();
 
             function counterAll() {
                 var showAll = document.getElementById("boxTimerAll");
@@ -55,7 +70,7 @@
                     setTimeout(counterAll, 1000);
                 }
             }
-            counterAll();
+
 
             function counterW() { //function who count seconds to 0 at workout time
                 var showS = document.getElementById("box");
@@ -64,7 +79,7 @@
                 if (secondsW > 0) {
                     setTimeout(counterW, 1000);
                 } else {
-                    if (secondsAll<=0) {
+                    if (secondsAll <= 0) {
                         showS.innerHTML = "Koniec";
                     } else {
                         counterR(); // after workout time initiate a rest function
@@ -73,7 +88,7 @@
                     }
                 }
             }
-            counterW();
+
 
             function counterR() { //function who count seconds to 0 at rest time
                 var showS = document.getElementById("box");
@@ -82,7 +97,7 @@
                 if (secondsR > 0) {
                     setTimeout(counterR, 1000);
                 } else {
-                    if (secondsAll<= 0) {
+                    if (secondsAll <= 0) {
                         showS.innerHTML = "Koniec";
                     } else {
                         counterW();
