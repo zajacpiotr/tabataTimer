@@ -11,7 +11,7 @@
     <button class="redSecWBtn" type="button">&lt;&lt;</button><input class="timerW" type="number" value="20"><button class="addSecWBtn" type="button">&gt;&gt;</button>
     <button class="redSecRBtn" type="button">&lt;&lt;</button><input class="timerR" type="number" value="10"><button class="addSecRBtn" type="button">&gt;&gt;</button>
     <button class="startApp" type="button">Start</button>
-    <div id="testBox"></div>
+    <div id="textBox"></div>
     <div id="box"> </div>
     <br>
     <div id="boxTimerAll"></div>
@@ -48,11 +48,14 @@
             secondsR++;
             var secondsAll = 240;
             var secondsPrep = 6;
+            var textInfo = document.getElementById("textBox");
 
             function counterPrep() {
                 var showS = document.getElementById("box");
                 secondsPrep--;
                 showS.innerHTML = String(secondsPrep);
+                // var textInfo = document.getElementById("textBox");
+                textInfo.innerHTML = String("Przygotuj się!!");
                 if (secondsPrep > 0) {
                     setTimeout(counterPrep, 1000);
                 } else {
@@ -76,6 +79,7 @@
                 var showS = document.getElementById("box");
                 secondsW--;
                 showS.innerHTML = String(secondsW); //+ " " + secondsAll;
+                textInfo.innerHTML = String("Jazda!!");
                 if (secondsW > 0) {
                     setTimeout(counterW, 1000);
                 } else {
@@ -94,13 +98,17 @@
                 var showS = document.getElementById("box");
                 secondsR--;
                 showS.innerHTML = String(secondsR); //+ " " + secondsAll;
+                textInfo.innerHTML = String("Przerwa");
+                if ((secondsR < 5) && (secondsAll > 9)) {
+                    textInfo.innerHTML = String("Przygotuj się!!");
+                }
                 if (secondsR > 0) {
                     setTimeout(counterR, 1000);
                 } else {
                     if (secondsAll <= 0) {
                         showS.innerHTML = "Koniec";
                     } else {
-                        counterW();
+                        counterW(); // after workout time initiate a workout function
                         secondsR = inputR.value;
                         secondsR++;
                     }
