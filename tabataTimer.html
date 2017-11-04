@@ -79,7 +79,15 @@
                 var showS = document.getElementById("box");
                 secondsW--;
                 showS.innerHTML = String(secondsW); //+ " " + secondsAll;
-                textInfo.innerHTML = String("Jazda!!");
+                if ((secondsW > 4) && (secondsW < 8)) {
+                    textInfo.innerHTML = String("Wytrzymaj jeszcze trochę!!");
+                } else if ((secondsW >= 8) && (secondsW <= 16)) {
+                    textInfo.innerHTML = String("Jazda!!");
+                } else if (secondsW > 16) {
+                    textInfo.innerHTML = String("Start!!");
+                } else {
+                    textInfo.innerHTML = String("Ostatnie powtórzenia!!");
+                }
                 if (secondsW > 0) {
                     setTimeout(counterW, 1000);
                 } else {
