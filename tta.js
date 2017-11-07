@@ -1,4 +1,5 @@
 function timerApp() {
+
     var secondsAll = 0;
     var redSecWBtn = document.querySelector(".redSecWBtn");
     redSecWBtn.addEventListener("click", function () {
@@ -32,6 +33,7 @@ function timerApp() {
         var secondsPrep = 6;
         var textInfo = document.getElementById("textBox");
 
+
         function counterPrep() {
             var showS = document.getElementById("box");
             secondsPrep--;
@@ -59,6 +61,8 @@ function timerApp() {
 
         function counterW() { //function who count seconds to 0 at workout time
             var showS = document.getElementById("box");
+            var inna = document.getElementById("test1");
+            inna.className += ' sanki';
             secondsW--;
             showS.innerHTML = String(secondsW); //+ " " + secondsAll;
             if ((secondsW > 4) && (secondsW < 8)) {
