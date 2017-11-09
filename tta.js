@@ -45,6 +45,8 @@ function timerApp() {
             } else {
                 counterAll();
                 counterW();
+                var inna = document.getElementById("test1");
+                inna.classList.toggle("animateW");
             }
         }
         counterPrep();
@@ -61,8 +63,8 @@ function timerApp() {
 
         function counterW() { //function who count seconds to 0 at workout time
             var showS = document.getElementById("box");
-            var inna = document.getElementById("test1");
-            inna.className += ' sanki';
+            //var inna = document.getElementById("test1");
+            //inna.classList.toggle("animateT");
             secondsW--;
             showS.innerHTML = String(secondsW); //+ " " + secondsAll;
             if ((secondsW > 4) && (secondsW < 8)) {
@@ -83,6 +85,12 @@ function timerApp() {
                     counterR(); // after workout time initiate a rest function
                     secondsW = inputW.value;
                     secondsW++;
+                    var inna = document.getElementById("test1");
+                    inna.classList.toggle("animateW");
+                    var inna2 = document.getElementById("test2");
+                    inna2.classList.toggle("animateR");
+
+
                 }
             }
         }
@@ -105,6 +113,10 @@ function timerApp() {
                     counterW(); // after workout time initiate a workout function
                     secondsR = inputR.value;
                     secondsR++;
+                    var inna = document.getElementById("test1");
+                    var inna2 = document.getElementById("test2");
+                    inna.classList.toggle("animateW");
+                    inna2.classList.toggle("animateR");
                 }
             }
         }
