@@ -1,6 +1,8 @@
 * {
     background-color: black;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 #testL {
@@ -16,6 +18,16 @@
 #test1 {
     width: 500px;
     height: 500px;
+    background-color: navy;
+
+
+}
+
+#test2 {
+    width: 500px;
+    height: 500px;
+    background-color: pink;
+
 
 }
 
@@ -33,12 +45,15 @@
     margin: 40px auto;
     width: 500px;
     height: 500px;
+
+
+
 }
 
 .animateW:before {
     width: 260px;
     height: 510px;
-    background: black;
+    background: red;
     border-radius: 50% 0 0 50%;
     top: -5px;
     left: -5px;
@@ -49,13 +64,54 @@
 .animateW:after {
     width: 260px;
     height: 510px;
-    background: black;
+    background: green;
     border-radius: 0 50% 50% 0;
     top: -5px;
     left: 260px;
     transform-origin: 0px 260px;
     animation: animation 15s linear;
 }
+
+.animateR:before,
+.animateR:after {
+    position: absolute;
+    content: '';
+}
+
+.animateR {
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 13px white;
+    transform: translateZ(0);
+    margin: 40px auto;
+    width: 500px;
+    height: 500px;
+
+
+}
+
+.animateR:before {
+    width: 260px;
+    height: 510px;
+    background: red;
+    border-radius: 50% 0 0 50%;
+    top: -5px;
+    left: -5px;
+    transform-origin: 260px 255px;
+    animation: animation 15s linear 5s;
+}
+
+.animateR:after {
+    width: 260px;
+    height: 510px;
+    background: green;
+    border-radius: 0 50% 50% 0;
+    top: -5px;
+    left: 260px;
+    transform-origin: 0px 260px;
+    animation: animation 15s linear;
+}
+
 
 
 

@@ -87,6 +87,8 @@ function timerApp() {
                     secondsW++;
                     var inna = document.getElementById("test1");
                     inna.classList.toggle("animateW");
+                    var inna2 = document.getElementById("test2");
+                    inna2.classList.toggle("animateR");
 
 
                 }
@@ -112,7 +114,9 @@ function timerApp() {
                     secondsR = inputR.value;
                     secondsR++;
                     var inna = document.getElementById("test1");
+                    var inna2 = document.getElementById("test2");
                     inna.classList.toggle("animateW");
+                    inna2.classList.toggle("animateR");
                 }
             }
         }
