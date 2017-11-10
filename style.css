@@ -3,32 +3,57 @@
     color: white;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-#testL {
-    height: 300px;
-    width: 300px;
-    background-color: white;
-    border-radius: 200px 200px 200px 200px;
-    -moz-border-radius: 200px 200px 200px 200px;
-    -webkit-border-radius: 200px 200px 200px 200px;
-    border: 0px solid #000000;
+
+#inner {
+    border-radius: 220px 220px 220px 220px;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    padding: 40px;
+    z-index: 2;
+    top: 25px;
+    left: 25px;
+}
+
+#cont {
+    border-radius: 220px 220px 220px 220px;
+    position: absolute;
+    background-color: black;
+    width: 350px;
+    height: 350px;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 40px;
+    z-index: 2;
+    top: 25px;
+    left: 25px;
+}
+
+
+#conteiner {
+    padding-top: 100px;
+    float: left;
+    background-color: pink;
 }
 
 #test1 {
     width: 500px;
     height: 500px;
-    background-color: navy;
-
-
+    position: absolute;
+    top: 25px;
+    left: 25px;
 }
 
 #test2 {
-    width: 500px;
-    height: 500px;
-    background-color: pink;
-
-
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    border-radius: 220px 220px 220px 220px;
 }
 
 .animateW:before,
@@ -45,31 +70,30 @@
     margin: 40px auto;
     width: 500px;
     height: 500px;
-
-
-
 }
 
 .animateW:before {
     width: 260px;
     height: 510px;
-    background: red;
+    background: black;
     border-radius: 50% 0 0 50%;
     top: -5px;
     left: -5px;
     transform-origin: 260px 255px;
     animation: animation 15s linear 5s;
+    z-index: -1;
 }
 
 .animateW:after {
     width: 260px;
     height: 510px;
-    background: green;
+    background: black;
     border-radius: 0 50% 50% 0;
     top: -5px;
     left: 260px;
     transform-origin: 0px 260px;
     animation: animation 15s linear;
+    z-index: -1;
 }
 
 .animateR:before,
@@ -84,32 +108,32 @@
     box-shadow: inset 0 0 0 13px white;
     transform: translateZ(0);
     margin: 40px auto;
-    width: 500px;
-    height: 500px;
-
-
+    width: 450px;
+    height: 450px;
 }
 
 .animateR:before {
-    width: 260px;
-    height: 510px;
-    background: red;
+    width: 234px;
+    height: 450px;
+    background: black;
     border-radius: 50% 0 0 50%;
-    top: -5px;
-    left: -5px;
-    transform-origin: 260px 255px;
-    animation: animation 15s linear 5s;
+    top: -4.5px;
+    left: -4.5px;
+    transform-origin: 234px 229.5px;
+    animation: animation 7s linear 3s;
+    z-index: 0;
 }
 
 .animateR:after {
-    width: 260px;
-    height: 510px;
-    background: green;
+    width: 234px;
+    height: 450px;
+    background: black;
     border-radius: 0 50% 50% 0;
-    top: -5px;
-    left: 260px;
-    transform-origin: 0px 260px;
-    animation: animation 15s linear;
+    top: -4.5px;
+    left: 234px;
+    transform-origin: 0px 234px;
+    animation: animation 7s linear;
+    z-index: 0;
 }
 
 
