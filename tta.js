@@ -32,7 +32,9 @@ function timerApp() {
         var secondsAll = 240;
         var secondsPrep = 6;
         var textInfo = document.getElementById("textBox");
-
+        /*var content = window.getComputedStyle(
+            document.querySelector('.animateW'), ':before'
+        ).getPropertyValue('animation: animation 5s linear 1s;');*/
 
         function counterPrep() {
             var showS = document.getElementById("box");
@@ -89,6 +91,7 @@ function timerApp() {
                     inna.classList.toggle("animateW");
                     var inna2 = document.getElementById("test2");
                     inna2.classList.toggle("animateR");
+                    inna2.classList.toggle("animateR1");
 
 
                 }

@@ -35,7 +35,7 @@
 
 #conteiner {
     padding-top: 100px;
-    float: left;
+    float: right;
     background-color: pink;
 }
 
@@ -136,8 +136,15 @@
     z-index: 0;
 }
 
+.animateR1 {}
 
+.animateR1:before {
+    animation: animation 3s linear 1s;
+}
 
+.animateR1:after {
+    animation: animation 3s linear;
+}
 
 
 @keyframes animation {
