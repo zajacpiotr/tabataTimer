@@ -32,6 +32,17 @@ function timerApp() {
         var secondsAll = 240;
         var secondsPrep = 6;
         var textInfo = document.getElementById("textBox");
+        var str = 2;
+        var addRule = (function (style) {
+            var sheet = document.head.appendChild(style).sheet;
+            return function (selector, css) {
+                var propText = Object.keys(css).map(function (p) {
+                    return p + ":" + css[p]
+                }).join(";");
+                sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
+            }
+        })(document.createElement("style"));
+        //document.styleSheets[0].addRule('animateW:before', 'animation: animation "' + str + '" linear 5s;');
         /*var content = window.getComputedStyle(
             document.querySelector('.animateW'), ':before'
         ).getPropertyValue('animation: animation 5s linear 1s;');*/
@@ -49,6 +60,7 @@ function timerApp() {
                 counterW();
                 var inna = document.getElementById("test1");
                 inna.classList.toggle("animateW");
+                document.styleSheets[0].addRule('.animateW:after', 'animation-duration: 40s;');
             }
         }
         counterPrep();
@@ -91,7 +103,7 @@ function timerApp() {
                     inna.classList.toggle("animateW");
                     var inna2 = document.getElementById("test2");
                     inna2.classList.toggle("animateR");
-                    inna2.classList.toggle("animateR1");
+                    //inna2.classList.toggle("animateR1");
 
 
                 }
