@@ -39,7 +39,7 @@
     background-color: pink;
 }
 
-#test1 {
+#outerAnimation {
     width: 500px;
     height: 500px;
     position: absolute;
@@ -47,7 +47,7 @@
     left: 25px;
 }
 
-#test2 {
+#innerAnimation {
     width: 450px;
     height: 450px;
     position: absolute;
@@ -80,7 +80,7 @@
     top: -5px;
     left: -5px;
     transform-origin: 260px 255px;
-    animation: animation 15s linear 5s;
+    animation: animation 15s linear 2s;
     z-index: -1;
 }
 
@@ -120,7 +120,7 @@
     top: -4.5px;
     left: -4.5px;
     transform-origin: 234px 229.5px;
-    animation: animation 7s linear 3s;
+    animation: animation 7s linear 2s;
     z-index: 0;
 }
 
