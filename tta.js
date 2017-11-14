@@ -1,6 +1,5 @@
 function timerApp() {
 
-    var secondsAll = 0;
     var redSecWBtn = document.querySelector(".redSecWBtn");
     redSecWBtn.addEventListener("click", function () {
         var input = document.querySelector(".timerW");
@@ -42,6 +41,13 @@ function timerApp() {
             }
         })(document.createElement("style"));
 
+        function addClassWorkout() {
+            document.getElementById("outerAnimation").classList.toggle("animateW");
+            var str = secondsW - 2;
+            document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
+            document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");
+        };
+
         function counterPrep() {
             var showS = document.getElementById("box");
             secondsPrep--;
@@ -52,11 +58,12 @@ function timerApp() {
             } else {
                 counterAll();
                 counterW();
-                var addClassW = document.getElementById("outerAnimation");
+                addClassWorkout();
+                /*var addClassW = document.getElementById("outerAnimation");
                 addClassW.classList.toggle("animateW");
                 var str = secondsW - 2;
                 document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
-                document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");
+                document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s"); */
             }
         }
         counterPrep();
@@ -122,13 +129,14 @@ function timerApp() {
                     counterW(); // after workout time initiate a workout function
                     secondsR = inputR.value;
                     secondsR++;
-                    var addClassW = document.getElementById("outerAnimation");
                     var addClassR = document.getElementById("innerAnimation");
-                    addClassW.classList.toggle("animateW");
                     addClassR.classList.toggle("animateR");
+                    addClassWorkout();
+                    /*var addClassW = document.getElementById("outerAnimation");
+                    addClassW.classList.toggle("animateW");
                     var str = secondsW - 2;
                     document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
-                    document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");
+                    document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");*/
                 }
             }
         }
