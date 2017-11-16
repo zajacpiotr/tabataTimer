@@ -14,50 +14,57 @@
 
 #inner {
     border-radius: 220px 220px 220px 220px;
-    position: absolute;
     width: 400px;
     height: 400px;
-    padding: 40px;
     z-index: 2;
-    top: 25px;
-    left: 25px;
     background-color: midnightblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #cont {
     border-radius: 220px 220px 220px 220px;
-    position: absolute;
     background-color: midnightblue;
     width: 350px;
     height: 350px;
-    display: table-cell;
-    vertical-align: middle;
     padding: 40px;
     z-index: 2;
-    top: 25px;
-    left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #conteiner {
-    padding-top: 50px;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
 }
 
 #outerAnimation {
     width: 500px;
     height: 500px;
-    position: absolute;
-    top: 5%;
-    left: 30%;
-    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 #innerAnimation {
     width: 450px;
     height: 450px;
-    position: absolute;
-    top: 25px;
-    left: 25px;
     border-radius: 220px 220px 220px 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 input,
@@ -152,7 +159,7 @@ input,
     }
 }
 
-@media (max-width:900px) {
+/*@media (max-width:900px) {
     #outerAnimation {
         left: 15%;
     }
@@ -162,4 +169,4 @@ input,
     #outerAnimation {
         left: 0%;
     }
-}
+}*/
