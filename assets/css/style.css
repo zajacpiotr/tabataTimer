@@ -134,7 +134,7 @@ input,
     border-radius: 50% 0 0 50%;
     top: -5px;
     left: -5px;
-    transform-origin: 260px 255px;
+    transform-origin: 258px 255px;
     animation: animation 15s linear 2s;
     z-index: -1;
 }
@@ -144,8 +144,8 @@ input,
     height: 510px;
     background: black;
     border-radius: 0 50% 50% 0;
-    top: -5px;
-    left: 260px;
+    top: -4px;
+    left: 250px;
     transform-origin: 0px 260px;
     animation: animation 15s linear;
     z-index: -1;
@@ -163,23 +163,23 @@ input,
 
 .animateR:before {
     width: 234px;
-    height: 450px;
+    height: 480px;
     background: black;
     border-radius: 50% 0 0 50%;
-    top: -4.5px;
-    left: -4.5px;
-    transform-origin: 234px 229.5px;
+    top: -2px;
+    left: -3.5px;
+    transform-origin: 230px 229.5px;
     animation: animation 7s linear 2s;
     z-index: 0;
 }
 
 .animateR:after {
     width: 234px;
-    height: 450px;
+    height: 480px;
     background: black;
     border-radius: 0 50% 50% 0;
-    top: -4.5px;
-    left: 234px;
+    top: -5.5px;
+    left: 220px;
     transform-origin: 0px 234px;
     animation: animation 7s linear;
     z-index: 0;
