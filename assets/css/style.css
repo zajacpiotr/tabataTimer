@@ -12,6 +12,12 @@
     font-size: 15px;
 }
 
+input {
+    width: 50px;
+    text-align: center;
+    height: 40px;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -20,8 +26,33 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-input {
-    width: 40px;
+.inputClass {
+    font-size: 40px;
+    color: lime;
+}
+
+.startApp {
+    width: 80px;
+    height: auto;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 1px;
+    margin-bottom: 5px;
+    border: 2px solid;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+
+}
+
+#boxTimerAll,
+#box {
+    font-size: 30px;
+    color: LawnGreen;
+    height: 40px;
+    width: 50px;
+    margin: 5px;
+    background-color: midnightblue;
     text-align: center;
 }
 
@@ -44,6 +75,8 @@ input {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
+    background-color: midnightblue;
 }
 
 
