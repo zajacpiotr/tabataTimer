@@ -1,5 +1,4 @@
 function timerApp() {
-
     var redSecWBtn = document.querySelector(".redSecWBtn");
     redSecWBtn.addEventListener("click", function () {
         var input = document.querySelector(".timerW");
@@ -22,13 +21,27 @@ function timerApp() {
     }, false)
     var startApp = document.querySelector(".startApp"); //button which starting this application
     startApp.addEventListener("click", function () {
+        function buttonsOff() {
+            var buttons = document.getElementsByTagName("button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+            }
+        }
+        buttonsOff();
+
+        function buttonsOn() {
+            var buttons = document.getElementsByTagName("button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = false;
+            }
+        }
         var inputW = document.querySelector(".timerW");
         var secondsW = inputW.value;
         var inputR = document.querySelector(".timerR"); //in future i must change this, make a inputs a global
         var secondsR = inputR.value;
         secondsW++;
         secondsR++;
-        var secondsAll = 240;
+        var secondsAll = 20;
         var secondsPrep = 6;
         var textInfo = document.getElementById("textBox");
         var addRule = (function (style) {
@@ -72,7 +85,6 @@ function timerApp() {
             }
         }
 
-
         function counterW() { //function who count seconds to 0 at workout time
             var showS = document.getElementById("box");
             secondsW--;
@@ -91,6 +103,9 @@ function timerApp() {
             } else {
                 if (secondsAll <= 0) {
                     showS.innerHTML = "Koniec";
+                    buttonsOn();
+                    var addClassW = document.getElementById("outerAnimation");
+                    addClassW.classList.toggle("animateW");
                 } else {
                     counterR(); // after workout time initiate a rest function
                     secondsW = inputW.value;
@@ -106,7 +121,6 @@ function timerApp() {
             }
         }
 
-
         function counterR() { //function who count seconds to 0 at rest time
             var showS = document.getElementById("box");
             secondsR--;
@@ -120,6 +134,9 @@ function timerApp() {
             } else {
                 if (secondsAll <= 0) {
                     showS.innerHTML = "Koniec";
+                    buttonsOn();
+                    var addClassR = document.getElementById("innerAnimation");
+                    addClassR.classList.toggle("animateR");
                 } else {
                     counterW(); // after rest time initiate a workout function
                     secondsR = inputR.value;
@@ -130,6 +147,5 @@ function timerApp() {
                 }
             }
         }
-
     }, false)
 }
