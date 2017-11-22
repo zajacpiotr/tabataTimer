@@ -37,20 +37,24 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 20px;
     text-transform: uppercase;
     padding: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border: 2px solid;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.75);
+}
 
+#textBox {
+    font-size: 20px;
+    background-color: midnightblue;
 }
 
 #boxTimerAll,
 #box {
-    font-size: 30px;
+    font-size: 45px !important;
     color: LawnGreen;
-    height: 40px;
-    width: 50px;
+    height: 50px;
+    width: 150px;
     margin: 5px;
     background-color: midnightblue;
     text-align: center;
@@ -68,6 +72,9 @@ input[type=number]::-webkit-outer-spin-button {
 .btn {
     width: 20px;
     height: 20px;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 #inputCont {
@@ -75,7 +82,7 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     background-color: midnightblue;
 }
 
@@ -97,7 +104,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: midnightblue;
     width: 350px;
     height: 350px;
-    padding: 40px;
+    padding: 25px;
     z-index: 2;
     display: flex;
     flex-direction: column;
