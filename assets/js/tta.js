@@ -25,6 +25,7 @@ function timerApp() {
             var buttons = document.getElementsByTagName("button");
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = true;
+                buttons[i].classList.add("btnInactive");
             }
         }
         buttonsOff();
@@ -33,6 +34,7 @@ function timerApp() {
             var buttons = document.getElementsByTagName("button");
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = false;
+                buttons[i].classList.remove("btnInactive");
             }
         }
         var inputW = document.querySelector(".timerW");
@@ -41,7 +43,7 @@ function timerApp() {
         var secondsR = inputR.value;
         secondsW++;
         secondsR++;
-        var secondsAll = 20;
+        var secondsAll = 240;
         var secondsPrep = 6;
         var textInfo = document.getElementById("textBox");
         var addRule = (function (style) {
