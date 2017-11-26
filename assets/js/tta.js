@@ -19,6 +19,16 @@ function timerApp() {
         const input = document.querySelector(".timerR");
         input.value++;
     }, false)
+    const redIntervBtn = document.querySelector(".redIntervBtn");
+    redIntervBtn.addEventListener("click", function () {
+        const input = document.querySelector(".timerInterv");
+        input.value--;
+    }, false)
+    const addIntervBtn = document.querySelector(".addIntervBtn");
+    addIntervBtn.addEventListener("click", function () {
+        const input = document.querySelector(".timerInterv");
+        input.value++;
+    }, false)
     const startApp = document.querySelector(".startApp"); //button which starting this application
     startApp.addEventListener("click", function () {
         function buttonsOff() {
