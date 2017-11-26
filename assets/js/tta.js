@@ -1,29 +1,29 @@
 function timerApp() {
-    var redSecWBtn = document.querySelector(".redSecWBtn");
+    const redSecWBtn = document.querySelector(".redSecWBtn");
     redSecWBtn.addEventListener("click", function () {
-        var input = document.querySelector(".timerW");
+        const input = document.querySelector(".timerW");
         input.value--;
     }, false)
-    var addSecWBtn = document.querySelector(".addSecWBtn");
+    const addSecWBtn = document.querySelector(".addSecWBtn");
     addSecWBtn.addEventListener("click", function () {
-        var input = document.querySelector(".timerW");
+        const input = document.querySelector(".timerW");
         input.value++;
     }, false)
-    var redSecRBtn = document.querySelector(".redSecRBtn");
+    const redSecRBtn = document.querySelector(".redSecRBtn");
     redSecRBtn.addEventListener("click", function () {
-        var input = document.querySelector(".timerR");
+        const input = document.querySelector(".timerR");
         input.value--;
     }, false)
-    var addSecRBtn = document.querySelector(".addSecRBtn");
+    const addSecRBtn = document.querySelector(".addSecRBtn");
     addSecRBtn.addEventListener("click", function () {
-        var input = document.querySelector(".timerR");
+        const input = document.querySelector(".timerR");
         input.value++;
     }, false)
-    var startApp = document.querySelector(".startApp"); //button which starting this application
+    const startApp = document.querySelector(".startApp"); //button which starting this application
     startApp.addEventListener("click", function () {
         function buttonsOff() {
-            var buttons = document.getElementsByTagName("button");
-            for (var i = 0; i < buttons.length; i++) {
+            const buttons = document.getElementsByTagName("button");
+            for (let i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = true;
                 buttons[i].classList.add("btnInactive");
             }
@@ -31,25 +31,25 @@ function timerApp() {
         buttonsOff();
 
         function buttonsOn() {
-            var buttons = document.getElementsByTagName("button");
-            for (var i = 0; i < buttons.length; i++) {
+            const buttons = document.getElementsByTagName("button");
+            for (let i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = false;
                 buttons[i].classList.remove("btnInactive");
             }
         }
-        var inputW = document.querySelector(".timerW");
-        var secondsW = inputW.value;
-        var inputR = document.querySelector(".timerR"); //in future i must change this, make a inputs a global
-        var secondsR = inputR.value;
+        const inputW = document.querySelector(".timerW");
+        let secondsW = inputW.value;
+        const inputR = document.querySelector(".timerR"); //in future i must change this, make a inputs a global
+        let secondsR = inputR.value;
         secondsW++;
         secondsR++;
-        var secondsAll = 240;
-        var secondsPrep = 6;
-        var textInfo = document.getElementById("textBox");
-        var addRule = (function (style) {
-            var sheet = document.head.appendChild(style).sheet;
+        let secondsAll = 240;
+        let secondsPrep = 6;
+        const textInfo = document.getElementById("textBox");
+        const addRule = (function (style) {
+            const sheet = document.head.appendChild(style).sheet;
             return function (selector, css) {
-                var propText = Object.keys(css).map(function (p) {
+                const propText = Object.keys(css).map(function (p) {
                     return p + ":" + css[p]
                 }).join(";");
                 sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
@@ -58,13 +58,13 @@ function timerApp() {
 
         function addClassWorkout() {
             document.getElementById("outerAnimation").classList.toggle("animateW");
-            var str = secondsW - 2;
+            const str = secondsW - 2;
             document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
             document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");
         };
 
         function counterPrep() { //preparation function 
-            var showS = document.getElementById("box");
+            const showS = document.getElementById("box");
             secondsPrep--;
             showS.innerHTML = String(secondsPrep);
             textInfo.innerHTML = String("Przygotuj się!!");
@@ -79,7 +79,7 @@ function timerApp() {
         counterPrep();
 
         function counterAll() {
-            var showAll = document.getElementById("boxTimerAll");
+            const showAll = document.getElementById("boxTimerAll");
             secondsAll--;
             showAll.innerHTML = String(secondsAll);
             if (secondsAll > 0) {
@@ -88,7 +88,7 @@ function timerApp() {
         }
 
         function counterW() { //function who count seconds to 0 at workout time
-            var showS = document.getElementById("box");
+            const showS = document.getElementById("box");
             secondsW--;
             showS.innerHTML = String(secondsW);
             if ((secondsW > 4) && (secondsW < 8)) { //info to User 
@@ -106,17 +106,17 @@ function timerApp() {
                 if (secondsAll <= 0) {
                     showS.innerHTML = "Koniec";
                     buttonsOn();
-                    var addClassW = document.getElementById("outerAnimation");
+                    const addClassW = document.getElementById("outerAnimation");
                     addClassW.classList.toggle("animateW");
                 } else {
                     counterR(); // after workout time initiate a rest function
                     secondsW = inputW.value;
                     secondsW++;
-                    var addClassW = document.getElementById("outerAnimation");
+                    const addClassW = document.getElementById("outerAnimation");
                     addClassW.classList.toggle("animateW");
-                    var addClassR = document.getElementById("innerAnimation");
+                    const addClassR = document.getElementById("innerAnimation");
                     addClassR.classList.toggle("animateR");
-                    var str = secondsR - 2;
+                    const str = secondsR - 2;
                     document.styleSheets[0].addRule('.animateR:after', "animation-duration:" + str + "s");
                     document.styleSheets[0].addRule('.animateR:before', "animation-duration:" + str + "s");
                 }
@@ -124,7 +124,7 @@ function timerApp() {
         }
 
         function counterR() { //function who count seconds to 0 at rest time
-            var showS = document.getElementById("box");
+            const showS = document.getElementById("box");
             secondsR--;
             showS.innerHTML = String(secondsR);
             textInfo.innerHTML = String("Przerwa");
@@ -137,13 +137,13 @@ function timerApp() {
                 if (secondsAll <= 0) {
                     showS.innerHTML = "Koniec";
                     buttonsOn();
-                    var addClassR = document.getElementById("innerAnimation");
+                    const addClassR = document.getElementById("innerAnimation");
                     addClassR.classList.toggle("animateR");
                 } else {
                     counterW(); // after rest time initiate a workout function
                     secondsR = inputR.value;
                     secondsR++;
-                    var addClassR = document.getElementById("innerAnimation");
+                    const addClassR = document.getElementById("innerAnimation");
                     addClassR.classList.toggle("animateR");
                     addClassWorkout();
                 }
