@@ -51,9 +51,12 @@ function timerApp() {
         let secondsW = inputW.value;
         const inputR = document.querySelector(".timerR"); //in future i must change this, make a inputs a global
         let secondsR = inputR.value;
+        const inputInterv = document.querySelector(".timerInterv");
+        let intervalsAll = inputInterv.value;
         secondsW++;
         secondsR++;
         let secondsAll = 240;
+        let actualInterv = 1;
         let secondsPrep = 6;
         const textInfo = document.getElementById("textBox");
         const addRule = (function (style) {
@@ -72,6 +75,7 @@ function timerApp() {
             document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
             document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");
         };
+        intervals();
 
         function counterPrep() { //preparation function 
             const showS = document.getElementById("box");
@@ -81,20 +85,25 @@ function timerApp() {
             if (secondsPrep > 0) {
                 setTimeout(counterPrep, 1000);
             } else {
-                counterAll();
+                //counterAll();
                 counterW();
                 addClassWorkout();
+
             }
         }
         counterPrep();
 
-        function counterAll() {
+        /*function counterAll() {
             const showAll = document.getElementById("boxTimerAll");
             secondsAll--;
             showAll.innerHTML = String(secondsAll);
             if (secondsAll > 0) {
                 setTimeout(counterAll, 1000);
             }
+        } */
+        function intervals() {
+            const showInterv = document.getElementById("boxTimerAll");
+            showInterv.innerHTML = String(actualInterv + "/" + intervalsAll);
         }
 
         function counterW() { //function who count seconds to 0 at workout time
@@ -144,7 +153,7 @@ function timerApp() {
             if (secondsR > 0) {
                 setTimeout(counterR, 1000);
             } else {
-                if (secondsAll <= 0) {
+                if (actualInterv >= intervalsAll) {
                     showS.innerHTML = "Koniec";
                     buttonsOn();
                     const addClassR = document.getElementById("innerAnimation");
@@ -156,6 +165,8 @@ function timerApp() {
                     const addClassR = document.getElementById("innerAnimation");
                     addClassR.classList.toggle("animateR");
                     addClassWorkout();
+                    actualInterv++;
+                    intervals();
                 }
             }
         }
