@@ -31,7 +31,7 @@ function timerApp() {
     }, false)
     const startApp = document.querySelector(".startApp"); //button which starting this application
     startApp.addEventListener("click", function () {
-        function buttonsOff() {
+        function buttonsOff() { //function which switch buttons off
             const buttons = document.getElementsByTagName("button");
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = true;
@@ -40,7 +40,7 @@ function timerApp() {
         }
         buttonsOff();
 
-        function buttonsOn() {
+        function buttonsOn() { //function which switch buttons on
             const buttons = document.getElementsByTagName("button");
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = false;
@@ -49,7 +49,7 @@ function timerApp() {
         }
         const inputW = document.querySelector(".timerW");
         let secondsW = inputW.value;
-        const inputR = document.querySelector(".timerR"); //in future i must change this, make a inputs a global
+        const inputR = document.querySelector(".timerR");
         let secondsR = inputR.value;
         const inputInterv = document.querySelector(".timerInterv");
         let intervalsAll = inputInterv.value;
@@ -59,7 +59,7 @@ function timerApp() {
         let actualInterv = 1;
         let secondsPrep = 6;
         const textInfo = document.getElementById("textBox");
-        const addRule = (function (style) {
+        const addRule = (function (style) { //function which helps adding rules to pseudoselectors
             const sheet = document.head.appendChild(style).sheet;
             return function (selector, css) {
                 const propText = Object.keys(css).map(function (p) {
@@ -69,7 +69,12 @@ function timerApp() {
             }
         })(document.createElement("style"));
 
-        function addClassWorkout() {
+        function addClassRest() { //function which toggle on/off animation at rest time
+            const addClassR = document.getElementById("innerAnimation");
+            addClassR.classList.toggle("animateR");
+        }
+
+        function addClassWorkout() { //function which toggle on/off animation at workout time
             document.getElementById("outerAnimation").classList.toggle("animateW");
             const str = secondsW - 2;
             document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
@@ -77,7 +82,7 @@ function timerApp() {
         };
         intervals();
 
-        function counterPrep() { //preparation function 
+        function counterPrep() { //function whcich counting preparation time
             const showS = document.getElementById("box");
             secondsPrep--;
             showS.innerHTML = String(secondsPrep);
@@ -85,23 +90,13 @@ function timerApp() {
             if (secondsPrep > 0) {
                 setTimeout(counterPrep, 1000);
             } else {
-                //counterAll();
                 counterW();
                 addClassWorkout();
-
             }
         }
         counterPrep();
 
-        /*function counterAll() {
-            const showAll = document.getElementById("boxTimerAll");
-            secondsAll--;
-            showAll.innerHTML = String(secondsAll);
-            if (secondsAll > 0) {
-                setTimeout(counterAll, 1000);
-            }
-        } */
-        function intervals() {
+        function intervals() { //function which put actual interval on the screen
             const showInterv = document.getElementById("boxTimerAll");
             showInterv.innerHTML = String(actualInterv + "/" + intervalsAll);
         }
@@ -131,10 +126,9 @@ function timerApp() {
                     counterR(); // after workout time initiate a rest function
                     secondsW = inputW.value;
                     secondsW++;
+                    addClassRest();
                     const addClassW = document.getElementById("outerAnimation");
                     addClassW.classList.toggle("animateW");
-                    const addClassR = document.getElementById("innerAnimation");
-                    addClassR.classList.toggle("animateR");
                     const str = secondsR - 2;
                     document.styleSheets[0].addRule('.animateR:after', "animation-duration:" + str + "s");
                     document.styleSheets[0].addRule('.animateR:before', "animation-duration:" + str + "s");
@@ -156,14 +150,12 @@ function timerApp() {
                 if (actualInterv >= intervalsAll) {
                     showS.innerHTML = "Koniec";
                     buttonsOn();
-                    const addClassR = document.getElementById("innerAnimation");
-                    addClassR.classList.toggle("animateR");
+                    addClassRest();
                 } else {
                     counterW(); // after rest time initiate a workout function
                     secondsR = inputR.value;
                     secondsR++;
-                    const addClassR = document.getElementById("innerAnimation");
-                    addClassR.classList.toggle("animateR");
+                    addClassRest();
                     addClassWorkout();
                     actualInterv++;
                     intervals();
