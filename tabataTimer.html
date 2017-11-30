@@ -19,9 +19,9 @@
                 <div id="inner">
                     <div id="cont">
                         <div id="inputCont">
-                            <div class="innerCont">trening<button class="addSecWBtn smallBtn btn" type="button">&Lambda;</button><input class="timerW inputClass" type="number" value="20"><button class="redSecWBtn smallBtn btn" type="button">V</button></div>
-                            <div class="innerCont">odpoczynek<button class="addSecRBtn smallBtn btn" type="button">&Lambda;</button><input class="timerR inputClass" type="number" value="10"><button class="redSecRBtn smallBtn btn" type="buttobtnn">V</button></div>
-                            <div class="innerCont">interwały<button class="addIntervBtn smallBtn btn" type="button">&Lambda;</button><input class="timerInterv inputClass" type="number" value="8"><button class="redIntervBtn smallBtn btn" type="buttobtnn">V</button></div>
+                            <div class="innerCont">trening<button class="addSecWBtn smallBtn btn" type="button">&Lambda;</button><input class="timerW inputClass" type="number" onkeypress="return event.charCode >= 48" min="1" value="20"><button class="redSecWBtn smallBtn btn" type="button">V</button></div>
+                            <div class="innerCont">odpoczynek<button class="addSecRBtn smallBtn btn" type="button">&Lambda;</button><input class="timerR inputClass" type="number" onkeypress="return event.charCode >= 48" min="1" pattern="\d+" value="10"><button class="redSecRBtn smallBtn btn" type="buttobtnn">V</button></div>
+                            <div class="innerCont">interwały<button class="addIntervBtn smallBtn btn" type="button">&Lambda;</button><input class="timerInterv inputClass" type="number" onkeypress="return event.charCode >= 48" min="1" value="8"><button class="redIntervBtn smallBtn btn" type="buttobtnn">V</button></div>
                         </div>
                         <button class="startApp btn" type="button">Start</button>
                         <div id="textBox"><br></div>
