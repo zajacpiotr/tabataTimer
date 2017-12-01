@@ -60,6 +60,10 @@ function timerApp() {
                         buttons[i].classList.remove("btnInactive");
                     }
                 }
+
+                function alertPlay() {
+                    const alert = document.getElementById("alert").play();
+                }
                 let secondsAll = 240;
                 let actualInterv = 1;
                 let secondsPrep = 6;
@@ -99,6 +103,9 @@ function timerApp() {
                     } else {
                         counterW();
                         addClassWorkout();
+                        //const sound = new Audio("../audio/alert.mp3");
+                        //sound.play();
+                        const alert = document.querySelector("#alert").play();
                     }
                 }
                 counterPrep();
@@ -139,6 +146,7 @@ function timerApp() {
                             const str = secondsR - 2;
                             document.styleSheets[0].addRule('.animateR:after', "animation-duration:" + str + "s");
                             document.styleSheets[0].addRule('.animateR:before', "animation-duration:" + str + "s");
+                            alertPlay();
                         }
                     }
                 }
@@ -158,6 +166,7 @@ function timerApp() {
                             showS.innerHTML = "Koniec";
                             buttonsOn();
                             addClassRest();
+                            const alertEnd = document.getElementById("endAlert").play();
                         } else {
                             counterW(); // after rest time initiate a workout function
                             secondsR = inputR.value;
@@ -166,11 +175,12 @@ function timerApp() {
                             addClassWorkout();
                             actualInterv++;
                             intervals();
+                            alertPlay();
                         }
                     }
                 }
             }
         }
-        validationInputs()
+        validationInputs();
     }, false)
 }
