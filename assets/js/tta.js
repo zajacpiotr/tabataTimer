@@ -1,4 +1,11 @@
 function timerApp() {
+    const secondSide = document.querySelector(".secondSide");
+    secondSide.addEventListener("click", function () {
+        const cont1 = document.querySelector("#conteiner");
+        cont1.classList.toggle("displayNone");
+    }, false)
+
+
     const redSecWBtn = document.querySelector(".redSecWBtn");
     redSecWBtn.addEventListener("click", function () {
         const input = document.querySelector(".timerW");
@@ -103,9 +110,7 @@ function timerApp() {
                     } else {
                         counterW();
                         addClassWorkout();
-                        //const sound = new Audio("../audio/alert.mp3");
-                        //sound.play();
-                        const alert = document.querySelector("#alert").play();
+                        alertPlay();
                     }
                 }
                 counterPrep();
