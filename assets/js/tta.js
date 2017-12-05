@@ -1,50 +1,31 @@
 function timerApp() {
-    const secondSide = document.querySelector(".secondSide");
-    secondSide.addEventListener("click", function () {
-        const cont1 = document.querySelector("#conteiner");
-        const cont2 = document.querySelector("#dateConteiner");
-        cont1.classList.add("displayNone");
-        cont2.classList.add("displayFlex");
+    document.querySelector(".secondSide").addEventListener("click", function () {
+        document.querySelector("#conteiner").classList.add("displayNone");
+        document.querySelector("#dateConteiner").classList.add("displayFlex");
     }, false)
-    const firstSide = document.querySelector(".firstSide");
-    firstSide.addEventListener("click", function () {
-        const cont1 = document.querySelector("#conteiner");
-        const cont2 = document.querySelector("#dateConteiner");
-        cont1.classList.remove("displayNone");
-        cont2.classList.remove("displayFlex");
+    document.querySelector(".firstSide").addEventListener("click", function () {
+        document.querySelector("#conteiner").classList.remove("displayNone");
+        document.querySelector("#dateConteiner").classList.remove("displayFlex");
     }, false)
-    const redSecWBtn = document.querySelector(".redSecWBtn");
-    redSecWBtn.addEventListener("click", function () {
-        const input = document.querySelector(".timerW");
-        input.value--;
+    document.querySelector(".redSecWBtn").addEventListener("click", function () {
+        document.querySelector(".timerW").value--;
     }, false)
-    const addSecWBtn = document.querySelector(".addSecWBtn");
-    addSecWBtn.addEventListener("click", function () {
-        const input = document.querySelector(".timerW");
-        input.value++;
+    document.querySelector(".addSecWBtn").addEventListener("click", function () {
+        document.querySelector(".timerW").value++;
     }, false)
-    const redSecRBtn = document.querySelector(".redSecRBtn");
-    redSecRBtn.addEventListener("click", function () {
-        const input = document.querySelector(".timerR");
-        input.value--;
+    document.querySelector(".redSecRBtn").addEventListener("click", function () {
+        document.querySelector(".timerR").value--;
     }, false)
-    const addSecRBtn = document.querySelector(".addSecRBtn");
-    addSecRBtn.addEventListener("click", function () {
-        const input = document.querySelector(".timerR");
-        input.value++;
+    document.querySelector(".addSecRBtn").addEventListener("click", function () {
+        document.querySelector(".timerR").value++;
     }, false)
-    const redIntervBtn = document.querySelector(".redIntervBtn");
-    redIntervBtn.addEventListener("click", function () {
-        const input = document.querySelector(".timerInterv");
-        input.value--;
+    document.querySelector(".redIntervBtn").addEventListener("click", function () {
+        document.querySelector(".timerInterv").value--;
     }, false)
-    const addIntervBtn = document.querySelector(".addIntervBtn");
-    addIntervBtn.addEventListener("click", function () {
-        const input = document.querySelector(".timerInterv");
-        input.value++;
+    document.querySelector(".addIntervBtn").addEventListener("click", function () {
+        document.querySelector(".timerInterv").value++;
     }, false)
-    const startApp = document.querySelector(".startApp"); //button which starting this application
-    startApp.addEventListener("click", function () {
+    document.querySelector(".startApp").addEventListener("click", function () {
         const inputW = document.querySelector(".timerW");
         let secondsW = inputW.value;
         const inputR = document.querySelector(".timerR");
@@ -65,7 +46,7 @@ function timerApp() {
                         buttons[i].classList.add("btnInactive");
                     }
                 }
-                buttonsOff();
+                //buttonsOff();
 
                 function buttonsOn() { //function which switch buttons on
                     const buttons = document.getElementsByTagName("button");
