@@ -2,10 +2,17 @@ function timerApp() {
     const secondSide = document.querySelector(".secondSide");
     secondSide.addEventListener("click", function () {
         const cont1 = document.querySelector("#conteiner");
-        cont1.classList.toggle("displayNone");
+        const cont2 = document.querySelector("#dateConteiner");
+        cont1.classList.add("displayNone");
+        cont2.classList.add("displayFlex");
     }, false)
-
-
+    const firstSide = document.querySelector(".firstSide");
+    firstSide.addEventListener("click", function () {
+        const cont1 = document.querySelector("#conteiner");
+        const cont2 = document.querySelector("#dateConteiner");
+        cont1.classList.remove("displayNone");
+        cont2.classList.remove("displayFlex");
+    }, false)
     const redSecWBtn = document.querySelector(".redSecWBtn");
     redSecWBtn.addEventListener("click", function () {
         const input = document.querySelector(".timerW");
