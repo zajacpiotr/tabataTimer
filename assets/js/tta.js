@@ -1,11 +1,17 @@
 function timerApp() {
-    document.querySelector(".secondSide").addEventListener("click", function () {
+    const secondSide = document.querySelector("#secondSide");
+    const firstSide = document.querySelector("#firstSide");
+    secondSide.addEventListener("click", function () {
         document.querySelector("#conteiner").classList.add("displayNone");
         document.querySelector("#dateConteiner").classList.add("displayFlex");
+        secondSide.classList.add("active");
+        firstSide.classList.remove("active");
     }, false)
-    document.querySelector(".firstSide").addEventListener("click", function () {
+    firstSide.addEventListener("click", function () {
         document.querySelector("#conteiner").classList.remove("displayNone");
         document.querySelector("#dateConteiner").classList.remove("displayFlex");
+        firstSide.classList.add("active");
+        secondSide.classList.remove("active");
     }, false)
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
         document.querySelector(".timerW").value--;
