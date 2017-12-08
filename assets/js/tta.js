@@ -1,15 +1,38 @@
 function timerApp() {
     const secondSide = document.querySelector("#secondSide");
     const firstSide = document.querySelector("#firstSide");
+    const conteinerFirstSide = document.querySelector("#conteiner");
+    const conteinerSecondSide = document.querySelector("#dateConteiner")
+    let date;
+
+    function dateStorage() {
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = mm + '/' + dd + '/' + yyyy;
+        localStorage.setItem('date', today);
+    }
     secondSide.addEventListener("click", function () {
-        document.querySelector("#conteiner").classList.add("displayNone");
-        document.querySelector("#dateConteiner").classList.add("displayFlex");
+        conteinerFirstSide.classList.add("displayNone");
+        conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
+        const showDate = document.getElementById("dateConteiner");
+        showDate.innerHTML = localStorage.getItem('date');
     }, false)
     firstSide.addEventListener("click", function () {
-        document.querySelector("#conteiner").classList.remove("displayNone");
-        document.querySelector("#dateConteiner").classList.remove("displayFlex");
+        conteinerFirstSide.classList.remove("displayNone");
+        conteinerSecondSide.classList.remove("displayFlex");
         firstSide.classList.add("active");
         secondSide.classList.remove("active");
     }, false)
@@ -166,6 +189,7 @@ function timerApp() {
                             buttonsOn();
                             addClassRest();
                             const alertEnd = document.getElementById("endAlert").play();
+                            dateStorage();
                         } else {
                             counterW(); // after rest time initiate a workout function
                             secondsR = inputR.value;
