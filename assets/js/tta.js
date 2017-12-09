@@ -19,8 +19,15 @@ function timerApp() {
             mm = '0' + mm
         }
 
-        today = mm + '/' + dd + '/' + yyyy;
-        localStorage.setItem('date', today);
+        today = dd + '/' + mm + '/' + yyyy;
+        //localStorage.setItem('date', today);
+        for (let i = 0; i < localStorage.length + 1; i++) {
+            if (localStorage["date" + i] == null) {
+                alert("date" + i);
+                localStorage.setItem("date" + i, today)
+                return
+            }
+        }
     }
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
@@ -28,7 +35,10 @@ function timerApp() {
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
         const showDate = document.getElementById("dateConteiner");
-        showDate.innerHTML = localStorage.getItem('date');
+        showDate.innerHTML = localStorage.getItem('date0');
+
+        alert(localStorage.length);
+
     }, false)
     firstSide.addEventListener("click", function () {
         conteinerFirstSide.classList.remove("displayNone");
