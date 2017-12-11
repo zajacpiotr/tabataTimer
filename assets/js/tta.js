@@ -20,12 +20,17 @@ function timerApp() {
         }
 
         today = dd + '/' + mm + '/' + yyyy;
-        //localStorage.setItem('date', today);
+        let len = localStorage.length - 1;
         for (let i = 0; i < localStorage.length + 1; i++) {
             if (localStorage["date" + i] == null) {
-                alert("date" + i);
-                localStorage.setItem("date" + i, today)
-                return
+                alert(spr + " " + localStorage.getItem("date" + len));
+                if (localStorage.getItem("date" + len) == today) {
+                    alert("nie dodam");
+                    return
+                } else {
+                    localStorage.setItem("date" + i, today)
+                    return
+                }
             }
         }
     }
