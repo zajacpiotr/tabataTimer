@@ -3,7 +3,6 @@ function timerApp() {
     const firstSide = document.querySelector("#firstSide");
     const conteinerFirstSide = document.querySelector("#conteiner");
     const conteinerSecondSide = document.querySelector("#dateConteiner")
-    let date;
 
     function dateStorage() {
         let today = new Date();
@@ -12,20 +11,18 @@ function timerApp() {
         let yyyy = today.getFullYear();
 
         if (dd < 10) {
-            dd = '0' + dd
+            dd = "0" + dd
         }
 
         if (mm < 10) {
-            mm = '0' + mm
+            mm = "0" + mm
         }
 
         today = dd + '/' + mm + '/' + yyyy;
         let len = localStorage.length - 1;
-        for (let i = 0; i < localStorage.length + 1; i++) {
+        for (let i = 0; i <= localStorage.length; i++) {
             if (localStorage["date" + i] == null) {
-                alert(spr + " " + localStorage.getItem("date" + len));
                 if (localStorage.getItem("date" + len) == today) {
-                    alert("nie dodam");
                     return
                 } else {
                     localStorage.setItem("date" + i, today)
@@ -40,10 +37,17 @@ function timerApp() {
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
         const showDate = document.getElementById("dateConteiner");
-        showDate.innerHTML = localStorage.getItem('date0');
-
+        for (i = 0; i < localStorage.length; i++) {
+            let dateIt = "date" + i;
+            showDate.innerHTML += localStorage.getItem(dateIt) + "<br>";
+        }
         alert(localStorage.length);
 
+        function deleteStorage() {
+            for (let i = 0; i <= localStorage.length; i++) {
+                localStorage.removeItem("date" + i);
+            }
+        }
     }, false)
     firstSide.addEventListener("click", function () {
         conteinerFirstSide.classList.remove("displayNone");
