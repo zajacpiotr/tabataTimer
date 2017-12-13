@@ -31,17 +31,21 @@ function timerApp() {
             }
         }
     }
+    let onceClick = true;
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
         conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
-        const showDate = document.getElementById("dateConteiner");
-        for (i = 0; i < localStorage.length; i++) {
-            let dateIt = "date" + i;
-            showDate.innerHTML += localStorage.getItem(dateIt) + "<br>";
+        const showDate = document.getElementById("innerDateConteiner");
+        if (onceClick) {
+            onceClick = false;
+            for (i = 0; i < localStorage.length; i++) {
+                showDate.innerHTML += "<br>" + localStorage.getItem("date" + i);
+            }
         }
-        alert(localStorage.length);
+
+        alert(allowed);
 
         function deleteStorage() {
             for (let i = 0; i <= localStorage.length; i++) {
