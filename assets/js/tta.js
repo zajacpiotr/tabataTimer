@@ -31,12 +31,31 @@ function timerApp() {
             }
         }
     }
+
     let onceClick = true;
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
         conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
+        // calendar
+        function calendar() {
+            let dateT = new Date();
+            let day = dateT.getDate();
+            let month = dateT.getMonth();
+            let year = dateT.getFullYear();
+            let firstDay = new Date(year, month, 1);
+            let weekday = new Array();
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            document.getElementById("calendar").innerHTML = weekday[firstDay.getDay()];
+        }
+        calendar();
         const showDate = document.getElementById("innerDateConteiner");
         if (onceClick) {
             onceClick = false;
@@ -44,8 +63,6 @@ function timerApp() {
                 showDate.innerHTML += "<br>" + localStorage.getItem("date" + i);
             }
         }
-
-        alert(allowed);
 
         function deleteStorage() {
             for (let i = 0; i <= localStorage.length; i++) {
