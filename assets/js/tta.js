@@ -53,7 +53,21 @@ function timerApp() {
             weekday[4] = "Thursday";
             weekday[5] = "Friday";
             weekday[6] = "Saturday";
-            document.getElementById("calendar").innerHTML = weekday[firstDay.getDay()];
+            let monthName = new Array();
+            monthName[0] = "Styczeń";
+            monthName[1] = "Luty";
+            monthName[2] = "Marzec";
+            monthName[3] = "Kwiecień";
+            monthName[4] = "Maj";
+            monthName[5] = "Czerwiec";
+            monthName[6] = "Lipiec";
+            monthName[7] = "Sierpień";
+            monthName[8] = "Wrzesień";
+            monthName[9] = "Październik";
+            monthName[10] = "Listpad";
+            monthName[11] = "Grudzień";
+            //document.getElementById("calendar").innerHTML = weekday[firstDay.getDay()];
+            document.getElementById("monthHeader").innerHTML = monthName[month];
         }
         calendar();
         const showDate = document.getElementById("innerDateConteiner");
