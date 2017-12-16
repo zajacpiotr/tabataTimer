@@ -291,24 +291,29 @@ ul li a:hover:not(.active) {
     display: flex;
     flex-direction: row;
     background-color: red;
-    width: 92px;
+    width: 184px;
 
 }
 
 #dayOfWeek ul li {
-    padding-left: 2px;
     background-color: red;
+    width: 24px;
 }
 
 .calendarInner {
-    width: 92px;
+    width: 184px;
     display: flex;
     flex-flow: row wrap;
     background-color: royalblue;
 }
 
 .calendarInner:not(:empty) {
-    width: 86px;
+    width: 184px;
+}
+
+.calendarDays {
+    width: 24px;
+
 }
 
 /*@media (max-width:900px) {

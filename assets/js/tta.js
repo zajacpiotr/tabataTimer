@@ -69,7 +69,12 @@ function timerApp() {
             //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
             document.getElementById("monthHeader").innerHTML = monthName[firstDay.getMonth()];
             for (let i = 1; i <= 31; i++) {
-                document.querySelector(".calendarInner").innerHTML += i + " ";
+                let checking = document.querySelector(".calendarInner");
+                const child = document.createElement("div");
+                child.innerHTML = i;
+                child.className = "calendarDays";
+                checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                //.innerHTML += i + " ";
             }
         }
         calendar();
