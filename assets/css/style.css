@@ -287,6 +287,30 @@ ul li a:hover:not(.active) {
     color: white;
 }
 
+#dayOfWeek ul {
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    width: 92px;
+
+}
+
+#dayOfWeek ul li {
+    padding-left: 2px;
+    background-color: red;
+}
+
+.calendarInner {
+    width: 92px;
+    display: flex;
+    flex-flow: row wrap;
+    background-color: royalblue;
+}
+
+.calendarInner:not(:empty) {
+    width: 86px;
+}
+
 /*@media (max-width:900px) {
     #outerAnimation {
         left: 15%;

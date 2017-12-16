@@ -46,13 +46,13 @@ function timerApp() {
             let year = dateT.getFullYear();
             let firstDay = new Date(year, month, 1);
             let weekday = new Array();
-            weekday[0] = "Sunday";
-            weekday[1] = "Monday";
-            weekday[2] = "Tuesday";
-            weekday[3] = "Wednesday";
-            weekday[4] = "Thursday";
-            weekday[5] = "Friday";
-            weekday[6] = "Saturday";
+            weekday[0] = "Niedziela";
+            weekday[1] = "Poniedziałek";
+            weekday[2] = "Wtorek";
+            weekday[3] = "Środa";
+            weekday[4] = "Czwartek";
+            weekday[5] = "Piątek";
+            weekday[6] = "Sobota";
             let monthName = new Array();
             monthName[0] = "Styczeń";
             monthName[1] = "Luty";
@@ -66,8 +66,11 @@ function timerApp() {
             monthName[9] = "Październik";
             monthName[10] = "Listpad";
             monthName[11] = "Grudzień";
-            //document.getElementById("calendar").innerHTML = weekday[firstDay.getDay()];
-            document.getElementById("monthHeader").innerHTML = monthName[month];
+            //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
+            document.getElementById("monthHeader").innerHTML = monthName[firstDay.getMonth()];
+            for (let i = 1; i <= 31; i++) {
+                document.querySelector(".calendarInner").innerHTML += i + " ";
+            }
         }
         calendar();
         const showDate = document.getElementById("innerDateConteiner");
