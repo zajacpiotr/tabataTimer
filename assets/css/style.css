@@ -312,9 +312,11 @@ ul li a:hover:not(.active) {
 }
 
 .calendarDays {
-    width: 24px;
+    width: 12.99%;
 
 }
+
+#filler {}
 
 /*@media (max-width:900px) {
     #outerAnimation {

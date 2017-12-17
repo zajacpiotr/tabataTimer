@@ -74,6 +74,7 @@ function timerApp() {
                 child.innerHTML = i;
                 child.className = "calendarDays";
                 checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                document.getElementById("filler").style.width = "64.95%";
                 //.innerHTML += i + " ";
             }
         }
