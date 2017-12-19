@@ -46,13 +46,13 @@ function timerApp() {
             let year = dateT.getFullYear();
             let firstDay = new Date(year, month, 1);
             let weekday = new Array();
-            weekday[0] = "Niedziela";
-            weekday[1] = "Poniedziałek";
-            weekday[2] = "Wtorek";
-            weekday[3] = "Środa";
-            weekday[4] = "Czwartek";
-            weekday[5] = "Piątek";
-            weekday[6] = "Sobota";
+            weekday[0] = "Poniedziałek";
+            weekday[1] = "Wtorek";
+            weekday[2] = "Środa";
+            weekday[3] = "Czwartek";
+            weekday[4] = "Piątek";
+            weekday[5] = "Sobota";
+            weekday[6] = "Niedziela";
             let monthName = new Array();
             monthName[0] = "Styczeń";
             monthName[1] = "Luty";
@@ -74,9 +74,34 @@ function timerApp() {
                 child.innerHTML = i;
                 child.className = "calendarDays";
                 checking.insertAdjacentHTML('beforeend', child.outerHTML);
-                document.getElementById("filler").style.width = "64.95%";
-                //.innerHTML += i + " ";
             }
+            let firstDayCalendar = firstDay.getDay();
+            let fillerHook = document.getElementById("filler");
+            switch (firstDayCalendar) {
+                case 0:
+                    fillerHook.style.width = "0%";
+                    break;
+                case 1:
+                    fillerHook.style.width = "12.99%";
+                    break;
+                case 2:
+                    fillerHook.style.width = "25.98%";
+                    break;
+                case 3:
+                    fillerHook.style.width = "38.97%";
+                    break;
+                case 4:
+                    fillerHook.style.width = "51.96%";
+                    break;
+                case 5:
+                    fillerHook.style.width = "64.95%";
+                    break;
+                case 6:
+                    fillerHook.style.width = "77.94%";
+            }
+            //document.getElementById("filler").style.width = "51.96%";
+            //.innerHTML += i + " ";
+
         }
         calendar();
         const showDate = document.getElementById("innerDateConteiner");
