@@ -66,44 +66,69 @@ function timerApp() {
             monthName[9] = "Październik";
             monthName[10] = "Listpad";
             monthName[11] = "Grudzień";
+            document.querySelector(".redMonthBtn").addEventListener("click", function () {
+                month--;
+                document.querySelector(".calendarInner").innerHTML = "";
+                firstDay = new Date(year, month, 1);
+                alert(firstDay.getDay());
+                //alert(firstDayCalendar);
+                addCalendar();
+                alert(firstDay.getDay());
+            }, false)
+            document.querySelector(".addMonthBtn").addEventListener("click", function () {
+                month++;
+                document.querySelector(".calendarInner").innerHTML = "";
+                firstDay = new Date(year, month, 1);
+                addCalendar();
+                alert(month);
+            }, false)
+            alert(month);
+            alert(firstDay);
+            addCalendar();
             //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
-            document.getElementById("monthHeader").innerHTML = monthName[firstDay.getMonth()];
-            for (let i = 1; i <= 31; i++) {
-                let checking = document.querySelector(".calendarInner");
-                const child = document.createElement("div");
-                child.innerHTML = i;
-                child.className = "calendarDays";
-                checking.insertAdjacentHTML('beforeend', child.outerHTML);
-            }
-            let firstDayCalendar = firstDay.getDay();
-            let fillerHook = document.getElementById("filler");
-            switch (firstDayCalendar) {
-                case 0:
-                    fillerHook.style.width = "0%";
-                    break;
-                case 1:
-                    fillerHook.style.width = "12.99%";
-                    break;
-                case 2:
-                    fillerHook.style.width = "25.98%";
-                    break;
-                case 3:
-                    fillerHook.style.width = "38.97%";
-                    break;
-                case 4:
-                    fillerHook.style.width = "51.96%";
-                    break;
-                case 5:
-                    fillerHook.style.width = "64.95%";
-                    break;
-                case 6:
-                    fillerHook.style.width = "77.94%";
-            }
-            //document.getElementById("filler").style.width = "51.96%";
-            //.innerHTML += i + " ";
+            function addCalendar() {
+                document.getElementById("monthHeader").innerHTML = monthName[firstDay.getMonth()];
+                for (let i = 1; i <= 31; i++) {
+                    let checking = document.querySelector(".calendarInner");
+                    const child = document.createElement("div");
+                    child.innerHTML = i;
+                    child.className = "calendarDays";
+                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                }
 
+                function firstDayCalendar() {
+                    let firstDayCalendar = firstDay.getDay();
+                    let fillerHook = document.getElementById("filler");
+                    switch (firstDayCalendar) {
+                        case 0:
+                            fillerHook.style.width = "0%";
+                            break;
+                        case 1:
+                            fillerHook.style.width = "12.99%";
+                            break;
+                        case 2:
+                            fillerHook.style.width = "25.98%";
+                            break;
+                        case 3:
+                            fillerHook.style.width = "38.97%";
+                            break;
+                        case 4:
+                            fillerHook.style.width = "51.96%";
+                            break;
+                        case 5:
+                            fillerHook.style.width = "64.95%";
+                            break;
+                        case 6:
+                            fillerHook.style.width = "77.94%";
+                    }
+                }
+                //document.getElementById("filler").style.width = "51.96%";
+                //.innerHTML += i + " ";
+            }
         }
         calendar();
+        addCalendar();
+        firstDayCalendar();
         const showDate = document.getElementById("innerDateConteiner");
         if (onceClick) {
             onceClick = false;
