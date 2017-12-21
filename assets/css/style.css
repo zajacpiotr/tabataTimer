@@ -322,7 +322,7 @@ ul li a:hover:not(.active) {
     justify-content: space-between;
 }
 
-#filler {}
+.filler {}
 
 /*@media (max-width:900px) {
     #outerAnimation {
