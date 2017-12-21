@@ -44,9 +44,7 @@ function timerApp() {
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
         // calendar
-
         function calendar() {
-
             let weekday = new Array();
             weekday[0] = "Poniedziałek";
             weekday[1] = "Wtorek";
@@ -71,7 +69,6 @@ function timerApp() {
 
             //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
             document.getElementById("monthHeader").innerHTML = monthName[firstDay.getMonth()];
-            //alert(firstDay.getDay());
             for (let i = 1; i <= 31; i++) {
                 let checking = document.querySelector(".calendarInner");
                 const child = document.createElement("div");
@@ -83,7 +80,7 @@ function timerApp() {
             if (firstDayCalendar == -1) {
                 firstDayCalendar = 6;
             }
-            let fillerHook = document.querySelector(".filler");
+            let fillerHook = document.querySelector(".filler"); //set width for first child in calendar to set up first day of the month
             switch (firstDayCalendar) {
                 case 0:
                     fillerHook.style.width = "0%";
@@ -111,16 +108,24 @@ function timerApp() {
 
         }
         calendar();
-        document.querySelector(".redMonthBtn").addEventListener("click", function () {
-            month -= 1;
-            //alert(month);
-            firstDay = new Date(year, month, 1);
-            //alert(firstDay);
+
+        function cleanDiv() {
             document.querySelector(".calendarInner").innerHTML = "";
-            let checking2 = document.querySelector(".calendarInner");
-            const child2 = document.createElement("div");
-            child2.className = "filler";
-            checking2.insertAdjacentHTML('beforeend', child2.outerHTML);
+            let hookParent = document.querySelector(".calendarInner");
+            const child = document.createElement("div");
+            child.className = "filler";
+            hookParent.insertAdjacentHTML('beforeend', child.outerHTML);
+        }
+        document.querySelector(".redMonthBtn").addEventListener("click", function () {
+            month--;
+            firstDay = new Date(year, month, 1);
+            cleanDiv();
+            calendar();
+        }, false)
+        document.querySelector(".addMonthBtn").addEventListener("click", function () {
+            month++;
+            firstDay = new Date(year, month, 1);
+            cleanDiv();
             calendar();
         }, false)
         const showDate = document.getElementById("innerDateConteiner");
