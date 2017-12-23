@@ -66,15 +66,25 @@ function timerApp() {
             monthName[9] = "Październik";
             monthName[10] = "Listpad";
             monthName[11] = "Grudzień";
-
             //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
-            document.getElementById("monthHeader").innerHTML = monthName[firstDay.getMonth()];
-            for (let i = 1; i <= 31; i++) {
-                let checking = document.querySelector(".calendarInner");
-                const child = document.createElement("div");
-                child.innerHTML = i;
-                child.className = "calendarDays";
-                checking.insertAdjacentHTML('beforeend', child.outerHTML);
+            const monthNameCheck = monthName[firstDay.getMonth()];
+            document.getElementById("monthHeader").innerHTML = monthNameCheck;
+            if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3] || monthNameCheck == monthName[1]) {
+                for (let i = 1; i <= 30; i++) {
+                    let checking = document.querySelector(".calendarInner");
+                    const child = document.createElement("div");
+                    child.innerHTML = i;
+                    child.className = "calendarDays";
+                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                }
+            } else {
+                for (let i = 1; i <= 31; i++) {
+                    let checking = document.querySelector(".calendarInner");
+                    const child = document.createElement("div");
+                    child.innerHTML = i;
+                    child.className = "calendarDays";
+                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                }
             }
             let firstDayCalendar = firstDay.getDay() - 1;
             if (firstDayCalendar == -1) {
