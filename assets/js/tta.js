@@ -68,7 +68,7 @@ function timerApp() {
             monthName[11] = "Grudzień";
             //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
             const monthNameCheck = monthName[firstDay.getMonth()];
-            document.getElementById("monthHeader").innerHTML = monthNameCheck;
+            document.getElementById("monthHeader").innerHTML = monthNameCheck + " " + year;
             if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3] || monthNameCheck == monthName[1]) {
                 for (let i = 1; i <= 30; i++) {
                     let checking = document.querySelector(".calendarInner");
@@ -128,12 +128,20 @@ function timerApp() {
         }
         document.querySelector(".redMonthBtn").addEventListener("click", function () {
             month--;
+            if (month < 0) {
+                month = 11;
+                year--;
+            }
             firstDay = new Date(year, month, 1);
             cleanDiv();
             calendar();
         }, false)
         document.querySelector(".addMonthBtn").addEventListener("click", function () {
             month++;
+            if (month > 11) {
+                month = 0;
+                year++;
+            }
             firstDay = new Date(year, month, 1);
             cleanDiv();
             calendar();
