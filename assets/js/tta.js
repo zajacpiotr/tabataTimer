@@ -69,13 +69,31 @@ function timerApp() {
             //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
             const monthNameCheck = monthName[firstDay.getMonth()];
             document.getElementById("monthHeader").innerHTML = monthNameCheck + " " + year;
-            if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3] || monthNameCheck == monthName[1]) {
+            if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3]) {
                 for (let i = 1; i <= 30; i++) {
                     let checking = document.querySelector(".calendarInner");
                     const child = document.createElement("div");
                     child.innerHTML = i;
                     child.className = "calendarDays";
                     checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                }
+            } else if (monthNameCheck == monthName[1]) {
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    for (let i = 1; i <= 29; i++) {
+                        let checking = document.querySelector(".calendarInner");
+                        const child = document.createElement("div");
+                        child.innerHTML = i;
+                        child.className = "calendarDays";
+                        checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                    }
+                } else {
+                    for (let i = 1; i <= 28; i++) {
+                        let checking = document.querySelector(".calendarInner");
+                        const child = document.createElement("div");
+                        child.innerHTML = i;
+                        child.className = "calendarDays";
+                        checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                    }
                 }
             } else {
                 for (let i = 1; i <= 31; i++) {
