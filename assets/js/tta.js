@@ -9,15 +9,15 @@ function timerApp() {
         let dd = today.getDate();
         let mm = today.getMonth() + 1;
         let yyyy = today.getFullYear();
+        /*
+                if (dd < 10) {
+                    dd = "0" + dd
+                }
 
-        if (dd < 10) {
-            dd = "0" + dd
-        }
-
-        if (mm < 10) {
-            mm = "0" + mm
-        }
-
+                if (mm < 10) {
+                    mm = "0" + mm
+                }
+        */
         today = dd + '/' + mm + '/' + yyyy;
         let len = localStorage.length - 1;
         for (let i = 0; i <= localStorage.length; i++) {
@@ -43,7 +43,7 @@ function timerApp() {
         conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
-        // calendar
+
         function calendar() {
             let weekday = new Array();
             weekday[0] = "Poniedziałek";
@@ -74,7 +74,8 @@ function timerApp() {
                     let checking = document.querySelector(".calendarInner");
                     const child = document.createElement("div");
                     child.innerHTML = i;
-                    child.className = "calendarDays";
+                    child.classList.add("calendarDays");
+                    child.classList.add("dayNr" + i);
                     checking.insertAdjacentHTML('beforeend', child.outerHTML);
                 }
             } else if (monthNameCheck == monthName[1]) {
@@ -83,7 +84,8 @@ function timerApp() {
                         let checking = document.querySelector(".calendarInner");
                         const child = document.createElement("div");
                         child.innerHTML = i;
-                        child.className = "calendarDays";
+                        child.classList.add("calendarDays");
+                        child.classList.add("dayNr" + i);
                         checking.insertAdjacentHTML('beforeend', child.outerHTML);
                     }
                 } else {
@@ -91,7 +93,8 @@ function timerApp() {
                         let checking = document.querySelector(".calendarInner");
                         const child = document.createElement("div");
                         child.innerHTML = i;
-                        child.className = "calendarDays";
+                        child.classList.add("calendarDays");
+                        child.classList.add("dayNr" + i);
                         checking.insertAdjacentHTML('beforeend', child.outerHTML);
                     }
                 }
@@ -100,7 +103,8 @@ function timerApp() {
                     let checking = document.querySelector(".calendarInner");
                     const child = document.createElement("div");
                     child.innerHTML = i;
-                    child.className = "calendarDays";
+                    child.classList.add("calendarDays");
+                    child.classList.add("dayNr" + i);
                     checking.insertAdjacentHTML('beforeend', child.outerHTML);
                 }
             }
@@ -131,9 +135,6 @@ function timerApp() {
                 case 6:
                     fillerHook.style.width = "77.94%";
             }
-            //document.getElementById("filler").style.width = "51.96%";
-            //.innerHTML += i + " ";
-
         }
         calendar();
 
