@@ -17,7 +17,6 @@ function timerApp() {
                 if (mm < 10) {
                     mm = "0" + mm
                 }
-        */
         today = dd + '/' + mm + '/' + yyyy;
         let len = localStorage.length - 1;
         for (let i = 0; i <= localStorage.length; i++) {
@@ -26,6 +25,25 @@ function timerApp() {
                     return
                 } else {
                     localStorage.setItem("date" + i, today)
+                    return
+                }
+            }
+        }
+        */
+        today = {
+            "one": dd,
+            "two": mm,
+            "three": yyyy
+        }
+        let len = localStorage.length;
+        let len2 = localStorage.length - 1;
+        const retrievedObject = localStorage.getItem("date" + len2);
+        for (let i = 0; i <= len; i++) {
+            if (localStorage["date" + i] == null) {
+                if (retrievedObject == JSON.stringify(today)) {
+                    return
+                } else {
+                    localStorage.setItem("date" + i, JSON.stringify(today))
                     return
                 }
             }
