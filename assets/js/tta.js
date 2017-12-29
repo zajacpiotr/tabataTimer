@@ -9,27 +9,6 @@ function timerApp() {
         let dd = today.getDate();
         let mm = today.getMonth() + 1;
         let yyyy = today.getFullYear();
-        /*
-                if (dd < 10) {
-                    dd = "0" + dd
-                }
-
-                if (mm < 10) {
-                    mm = "0" + mm
-                }
-        today = dd + '/' + mm + '/' + yyyy;
-        let len = localStorage.length - 1;
-        for (let i = 0; i <= localStorage.length; i++) {
-            if (localStorage["date" + i] == null) {
-                if (localStorage.getItem("date" + len) == today) {
-                    return
-                } else {
-                    localStorage.setItem("date" + i, today)
-                    return
-                }
-            }
-        }
-        */
         today = {
             "one": dd,
             "two": mm,
@@ -61,6 +40,11 @@ function timerApp() {
         conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
+        // test parse
+        let checkParse = localStorage.getItem("date0");
+        checkParse = JSON.parse(checkParse);
+        alert(checkParse["one"]);
+
 
         function calendar() {
             let weekday = new Array();
@@ -187,7 +171,8 @@ function timerApp() {
         if (onceClick) {
             onceClick = false;
             for (i = 0; i < localStorage.length; i++) {
-                showDate.innerHTML += "<br>" + localStorage.getItem("date" + i);
+                let dateNumber = "date" + i;
+                showDate.innerHTML += "<br>" + JSON.parse(localStorage.getItem(dateNumber["one"])) + "/" + localStorage.getItem(dateNumber["two"]) + "/" + localStorage.getItem(dateNumber["three"]);
             }
         }
 

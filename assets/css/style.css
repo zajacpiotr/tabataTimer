@@ -322,7 +322,11 @@ ul li a:hover:not(.active) {
     justify-content: space-between;
 }
 
-.filler {}
+.calendarDays:hover {
+    background-color: dimgrey;
+    color: black;
+    cursor: context-menu;
+}
 
 /*@media (max-width:900px) {
     #outerAnimation {
