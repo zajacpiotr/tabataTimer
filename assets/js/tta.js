@@ -33,7 +33,6 @@ function timerApp() {
     let month = dateT.getMonth();
     let year = dateT.getFullYear();
     let firstDay = new Date(year, month, 1);
-
     let onceClick = true;
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
@@ -41,10 +40,25 @@ function timerApp() {
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
         // test parse
-        let checkParse = localStorage.getItem("date0");
-        checkParse = JSON.parse(checkParse);
-        alert(checkParse["one"]);
-
+        /*for (let i = 0; i <= localStorage.length - 1; i++) {
+            let checkParse = localStorage.getItem("date" + i);
+            checkParse = JSON.parse(checkParse);
+            let xxx = checkParse.one;
+            console.log(xxx);
+        }
+*/
+        function dayActive() {
+            for (let i = 0; i <= localStorage.length - 1; i++) {
+                let checkParse = localStorage.getItem("date" + i);
+                checkParse = JSON.parse(checkParse);
+                checkParse = checkParse.one;
+                for (let j = 0; j <= 31; j++) {
+                    if (checkParse == j) {
+                        document.querySelector(".dayNr" + j).classList.add("calendarDaysActive");
+                    }
+                }
+            }
+        }
 
         function calendar() {
             let weekday = new Array();
@@ -139,6 +153,7 @@ function timerApp() {
             }
         }
         calendar();
+        dayActive();
 
         function cleanDiv() {
             document.querySelector(".calendarInner").innerHTML = "";
@@ -156,6 +171,7 @@ function timerApp() {
             firstDay = new Date(year, month, 1);
             cleanDiv();
             calendar();
+            dayActive();
         }, false)
         document.querySelector(".addMonthBtn").addEventListener("click", function () {
             month++;
@@ -166,6 +182,7 @@ function timerApp() {
             firstDay = new Date(year, month, 1);
             cleanDiv();
             calendar();
+            dayActive();
         }, false)
         const showDate = document.getElementById("innerDateConteiner");
         if (onceClick) {

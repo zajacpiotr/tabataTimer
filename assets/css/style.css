@@ -328,6 +328,11 @@ ul li a:hover:not(.active) {
     cursor: context-menu;
 }
 
+.calendarDaysActive {
+    background-color: darkorange;
+    color: black;
+}
+
 /*@media (max-width:900px) {
     #outerAnimation {
         left: 15%;
