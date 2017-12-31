@@ -51,9 +51,10 @@ function timerApp() {
             for (let i = 0; i <= localStorage.length - 1; i++) {
                 let checkParse = localStorage.getItem("date" + i);
                 checkParse = JSON.parse(checkParse);
-                checkParse = checkParse.one;
+                let checkParseDay = checkParse.one;
+                let checkParseMonth = checkParse.two - 1;
                 for (let j = 0; j <= 31; j++) {
-                    if (checkParse == j) {
+                    if ((checkParseDay == j) && (checkParseMonth == month)) {
                         document.querySelector(".dayNr" + j).classList.add("calendarDaysActive");
                     }
                 }
