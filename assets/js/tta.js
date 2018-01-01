@@ -39,14 +39,6 @@ function timerApp() {
         conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
-        // test parse
-        /*for (let i = 0; i <= localStorage.length - 1; i++) {
-            let checkParse = localStorage.getItem("date" + i);
-            checkParse = JSON.parse(checkParse);
-            let xxx = checkParse.one;
-            console.log(xxx);
-        }
-*/
         function dayActive() {
             for (let i = 0; i <= localStorage.length - 1; i++) {
                 let checkParse = localStorage.getItem("date" + i);
@@ -83,7 +75,6 @@ function timerApp() {
             monthName[9] = "Październik";
             monthName[10] = "Listpad";
             monthName[11] = "Grudzień";
-            //document.getElementById("dayOfWeek").innerHTML = weekday[firstDay.getDay()];
             const monthNameCheck = monthName[firstDay.getMonth()];
             document.getElementById("monthHeader").innerHTML = monthNameCheck + " " + year;
             if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3]) {
