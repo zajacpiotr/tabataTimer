@@ -3,6 +3,8 @@ function timerApp() {
     const firstSide = document.querySelector("#firstSide");
     const conteinerFirstSide = document.querySelector("#conteiner");
     const conteinerSecondSide = document.querySelector("#dateConteiner")
+    const thirdSide = document.querySelector("#thirdSide");
+    const conteinerThirdSide = document.querySelector("#weightConteiner");
 
     function dateStorage() {
         let today = new Date();
@@ -39,6 +41,8 @@ function timerApp() {
         conteinerSecondSide.classList.add("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
+        thirdSide.classList.remove("active");
+
         function dayActive() {
             for (let i = 0; i <= localStorage.length - 1; i++) {
                 let checkParse = localStorage.getItem("date" + i);
@@ -191,11 +195,20 @@ function timerApp() {
             }
         }
     }, false)
+    thirdSide.addEventListener("click", function () {
+        conteinerThirdSide.classList.remove("displayNone");
+        conteinerSecondSide.classList.remove("displayFlex");
+        conteinerFirstSide.classList.add("displayNone");
+        thirdSide.classList.add("active");
+        secondSide.classList.remove("active");
+        firstSide.classList.remove("active");
+    }, false)
     firstSide.addEventListener("click", function () {
         conteinerFirstSide.classList.remove("displayNone");
         conteinerSecondSide.classList.remove("displayFlex");
         firstSide.classList.add("active");
         secondSide.classList.remove("active");
+        thirdSide.classList.remove("active");
     }, false)
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
         document.querySelector(".timerW").value--;
