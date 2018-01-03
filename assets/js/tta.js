@@ -39,9 +39,11 @@ function timerApp() {
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
         conteinerSecondSide.classList.add("displayFlex");
+        conteinerThirdSide.classList.remove("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
         thirdSide.classList.remove("active");
+        cleanDiv();
 
         function dayActive() {
             for (let i = 0; i <= localStorage.length - 1; i++) {
@@ -197,6 +199,7 @@ function timerApp() {
     }, false)
     thirdSide.addEventListener("click", function () {
         conteinerThirdSide.classList.remove("displayNone");
+        conteinerThirdSide.classList.add("displayFlex");
         conteinerSecondSide.classList.remove("displayFlex");
         conteinerFirstSide.classList.add("displayNone");
         thirdSide.classList.add("active");
@@ -206,6 +209,7 @@ function timerApp() {
     firstSide.addEventListener("click", function () {
         conteinerFirstSide.classList.remove("displayNone");
         conteinerSecondSide.classList.remove("displayFlex");
+        conteinerThirdSide.classList.remove("displayFlex");
         firstSide.classList.add("active");
         secondSide.classList.remove("active");
         thirdSide.classList.remove("active");
