@@ -291,32 +291,35 @@ ul li a:hover:not(.active) {
     display: flex;
     flex-direction: row;
     background-color: red;
-    width: 167px;
+    width: 30%;
     text-align: center
 }
 
 #dayOfWeek ul li {
     background-color: red;
-    width: 24px;
+    width: 13%;
 }
 
 .calendarInner {
-    width: 167px;
+    width: 30%;
     display: flex;
     flex-flow: row wrap;
 }
 
 .calendarInner:not(:empty) {
-    width: 184px;
+    width: 30%;
 }
 
 .calendarDays {
     width: 12.99%;
-    text-align: center
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 36px;
 }
 
 #outerMonthHeader {
-    width: 167px;
+    width: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -329,12 +332,12 @@ ul li a:hover:not(.active) {
 }
 
 .calendarDaysActive {
-    background-color: darkorange;
-    color: black;
-    border-radius: 82px 82px 82px 82px;
-    -moz-border-radius: 82px 82px 82px 82px;
-    -webkit-border-radius: 82px 82px 82px 82px;
-    border: 0px solid #000000;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: 1.5px solid deepskyblue;
 }
 
 #weightConteiner {
