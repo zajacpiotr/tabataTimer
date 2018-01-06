@@ -133,22 +133,22 @@ function timerApp() {
                     fillerHook.style.width = "0%";
                     break;
                 case 1:
-                    fillerHook.style.width = "12.99%";
+                    fillerHook.style.width = "14.23%";
                     break;
                 case 2:
-                    fillerHook.style.width = "25.98%";
+                    fillerHook.style.width = "28.46%";
                     break;
                 case 3:
-                    fillerHook.style.width = "38.97%";
+                    fillerHook.style.width = "42.69%";
                     break;
                 case 4:
-                    fillerHook.style.width = "51.96%";
+                    fillerHook.style.width = "56.92%";
                     break;
                 case 5:
-                    fillerHook.style.width = "64.95%";
+                    fillerHook.style.width = "71.15%";
                     break;
                 case 6:
-                    fillerHook.style.width = "77.94%";
+                    fillerHook.style.width = "85.38%";
             }
         }
         calendar();
@@ -198,7 +198,7 @@ function timerApp() {
             }
         }
     }, false)
-    thirdSide.addEventListener("click", function () {
+    /*thirdSide.addEventListener("click", function () {
         conteinerThirdSide.classList.remove("displayNone");
         conteinerThirdSide.classList.add("displayFlex");
         conteinerSecondSide.classList.remove("displayFlex");
@@ -206,7 +206,7 @@ function timerApp() {
         thirdSide.classList.add("active");
         secondSide.classList.remove("active");
         firstSide.classList.remove("active");
-    }, false)
+    }, false)*/
     firstSide.addEventListener("click", function () {
         conteinerFirstSide.classList.remove("displayNone");
         conteinerSecondSide.classList.remove("displayFlex");
