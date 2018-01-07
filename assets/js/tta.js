@@ -150,6 +150,13 @@ function timerApp() {
             case 6:
                 fillerHook.style.width = "85.38%";
         }
+        if (month == dateT.getMonth()) {
+            for (let i = 0; i <= 31; i++) {
+                if (day == i) {
+                    document.querySelector(".dayNr" + i).classList.add("calendarToday");
+                }
+            }
+        }
     }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
         month--;

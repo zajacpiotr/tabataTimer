@@ -306,17 +306,13 @@ ul li a:hover:not(.active) {
     flex-flow: row wrap;
 }
 
-.calendarInner:not(:empty) {
-    width: 30%;
-}
-
 .calendarDays {
     width: 13.9%;
     height: 36px;
     text-align: center;
     vertical-align: middle;
     line-height: 36px;
-    background-color: blue;
+    background-color: crimson;
     margin: 0.5px;
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
@@ -337,9 +333,8 @@ ul li a:hover:not(.active) {
 }
 
 .calendarDaysActive {
-    background-color: blue;
+    background-color: crimson;
     color: white;
-
     border: 1.5px solid yellow;
 
 }
@@ -353,6 +348,10 @@ ul li a:hover:not(.active) {
     margin-right: auto;
     color: white;
     flex-direction: column;
+}
+
+.calendarToday {
+    background-color: darkslateblue;
 }
 
 /*@media (max-width:900px) {
