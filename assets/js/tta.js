@@ -83,7 +83,7 @@ function timerApp() {
         monthName[10] = "Listpad";
         monthName[11] = "Grudzień";
         const monthNameCheck = monthName[firstDay.getMonth()];
-        document.getElementById("monthHeader").innerHTML = monthNameCheck + " " + year;
+        document.querySelector(".monthHeader").innerHTML = monthNameCheck + " " + year;
         if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3]) {
             for (let i = 1; i <= 30; i++) {
                 let checking = document.querySelector(".calendarInner");
