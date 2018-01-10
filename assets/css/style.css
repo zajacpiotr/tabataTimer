@@ -354,6 +354,13 @@ ul li a:hover:not(.active) {
     background-color: darkslateblue;
 }
 
+.calendarInnerW {
+    width: 30%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
 /*@media (max-width:900px) {
     #outerAnimation {
         left: 15%;
