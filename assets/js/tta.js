@@ -60,7 +60,7 @@ function timerApp() {
         hookParent.insertAdjacentHTML('beforeend', child.outerHTML);
     }
 
-    function calendar() {
+    function calendar(x, y, z) {
         let weekday = new Array();
         weekday[0] = "Poniedziałek";
         weekday[1] = "Wtorek";
@@ -83,10 +83,10 @@ function timerApp() {
         monthName[10] = "Listpad";
         monthName[11] = "Grudzień";
         const monthNameCheck = monthName[firstDay.getMonth()];
-        document.querySelector(".monthHeader").innerHTML = monthNameCheck + " " + year;
+        document.querySelector(x).innerHTML = monthNameCheck + " " + year;
         if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3]) {
             for (let i = 1; i <= 30; i++) {
-                let checking = document.querySelector(".calendarInner");
+                let checking = document.querySelector(y);
                 const child = document.createElement("div");
                 child.innerHTML = i;
                 child.classList.add("calendarDays");
@@ -96,7 +96,7 @@ function timerApp() {
         } else if (monthNameCheck == monthName[1]) {
             if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
                 for (let i = 1; i <= 29; i++) {
-                    let checking = document.querySelector(".calendarInner");
+                    let checking = document.querySelector(y);
                     const child = document.createElement("div");
                     child.innerHTML = i;
                     child.classList.add("calendarDays");
@@ -105,7 +105,7 @@ function timerApp() {
                 }
             } else {
                 for (let i = 1; i <= 28; i++) {
-                    let checking = document.querySelector(".calendarInner");
+                    let checking = document.querySelector(y);
                     const child = document.createElement("div");
                     child.innerHTML = i;
                     child.classList.add("calendarDays");
@@ -115,7 +115,7 @@ function timerApp() {
             }
         } else {
             for (let i = 1; i <= 31; i++) {
-                let checking = document.querySelector(".calendarInner");
+                let checking = document.querySelector(y);
                 const child = document.createElement("div");
                 child.innerHTML = i;
                 child.classList.add("calendarDays");
@@ -127,7 +127,7 @@ function timerApp() {
         if (firstDayCalendar == -1) {
             firstDayCalendar = 6;
         }
-        let fillerHook = document.querySelector(".filler"); //set width for first child in calendar to set up first day of the month
+        let fillerHook = document.querySelector(z); //set width for first child in calendar to set up first day of the month
         switch (firstDayCalendar) {
             case 0:
                 fillerHook.style.width = "0%";
@@ -158,6 +158,7 @@ function timerApp() {
             }
         }
     }
+
     function calendarW() {
         let weekday = new Array();
         weekday[0] = "Poniedziałek";
@@ -264,7 +265,7 @@ function timerApp() {
         }
         firstDay = new Date(year, month, 1);
         cleanDiv();
-        calendar();
+        calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
     document.querySelector(".addMonthBtn").addEventListener("click", function () {
@@ -275,7 +276,7 @@ function timerApp() {
         }
         firstDay = new Date(year, month, 1);
         cleanDiv();
-        calendar();
+        calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
     secondSide.addEventListener("click", function () {
@@ -286,7 +287,7 @@ function timerApp() {
         firstSide.classList.remove("active");
         thirdSide.classList.remove("active");
         cleanDiv();
-        calendar();
+        calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
 
