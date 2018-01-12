@@ -157,6 +157,12 @@ function timerApp() {
                 }
             }
         }
+        for (let i = 1; i <= 31; i++) {
+            let sanki = document.querySelector(".dayNr" + i);
+            sanki.addEventListener("click", function () {
+                alert(i);
+            }, false)
+        }
     }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
         month--;
@@ -231,6 +237,9 @@ function timerApp() {
         cleanDiv(".calendarInnerW", "fillerW");
         calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
     }, false)
+
+
+
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
         document.querySelector(".timerW").value--;
     }, false)
