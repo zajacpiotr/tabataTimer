@@ -52,11 +52,11 @@ function timerApp() {
         }
     }
 
-    function cleanDiv() {
-        document.querySelector(".calendarInner").innerHTML = "";
-        let hookParent = document.querySelector(".calendarInner");
+    function cleanDiv(x, y) {
+        let hookParent = document.querySelector(x);
+        hookParent.innerHTML = "";
         const child = document.createElement("div");
-        child.className = "filler";
+        child.className = y;
         hookParent.insertAdjacentHTML('beforeend', child.outerHTML);
     }
 
@@ -158,105 +158,6 @@ function timerApp() {
             }
         }
     }
-
-    function calendarW() {
-        let weekday = new Array();
-        weekday[0] = "Poniedziałek";
-        weekday[1] = "Wtorek";
-        weekday[2] = "Środa";
-        weekday[3] = "Czwartek";
-        weekday[4] = "Piątek";
-        weekday[5] = "Sobota";
-        weekday[6] = "Niedziela";
-        let monthName = new Array();
-        monthName[0] = "Styczeń";
-        monthName[1] = "Luty";
-        monthName[2] = "Marzec";
-        monthName[3] = "Kwiecień";
-        monthName[4] = "Maj";
-        monthName[5] = "Czerwiec";
-        monthName[6] = "Lipiec";
-        monthName[7] = "Sierpień";
-        monthName[8] = "Wrzesień";
-        monthName[9] = "Październik";
-        monthName[10] = "Listpad";
-        monthName[11] = "Grudzień";
-        const monthNameCheck = monthName[firstDay.getMonth()];
-        document.querySelector(".monthHeaderW").innerHTML = monthNameCheck + " " + year;
-        if (monthNameCheck == monthName[10] || monthNameCheck == monthName[8] || monthNameCheck == monthName[5] || monthNameCheck == monthName[3]) {
-            for (let i = 1; i <= 30; i++) {
-                let checking = document.querySelector(".calendarInnerW");
-                const child = document.createElement("div");
-                child.innerHTML = i;
-                child.classList.add("calendarDays");
-                child.classList.add("dayNr" + i);
-                checking.insertAdjacentHTML('beforeend', child.outerHTML);
-            }
-        } else if (monthNameCheck == monthName[1]) {
-            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-                for (let i = 1; i <= 29; i++) {
-                    let checking = document.querySelector(".calendarInnerW");
-                    const child = document.createElement("div");
-                    child.innerHTML = i;
-                    child.classList.add("calendarDays");
-                    child.classList.add("dayNr" + i);
-                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
-                }
-            } else {
-                for (let i = 1; i <= 28; i++) {
-                    let checking = document.querySelector(".calendarInnerW");
-                    const child = document.createElement("div");
-                    child.innerHTML = i;
-                    child.classList.add("calendarDays");
-                    child.classList.add("dayNr" + i);
-                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
-                }
-            }
-        } else {
-            for (let i = 1; i <= 31; i++) {
-                let checking = document.querySelector(".calendarInnerW");
-                const child = document.createElement("div");
-                child.innerHTML = i;
-                child.classList.add("calendarDays");
-                child.classList.add("dayNr" + i);
-                checking.insertAdjacentHTML('beforeend', child.outerHTML);
-            }
-        }
-        let firstDayCalendar = firstDay.getDay() - 1;
-        if (firstDayCalendar == -1) {
-            firstDayCalendar = 6;
-        }
-        let fillerHook = document.querySelector(".fillerW"); //set width for first child in calendar to set up first day of the month
-        switch (firstDayCalendar) {
-            case 0:
-                fillerHook.style.width = "0%";
-                break;
-            case 1:
-                fillerHook.style.width = "14.23%";
-                break;
-            case 2:
-                fillerHook.style.width = "28.46%";
-                break;
-            case 3:
-                fillerHook.style.width = "42.69%";
-                break;
-            case 4:
-                fillerHook.style.width = "56.92%";
-                break;
-            case 5:
-                fillerHook.style.width = "71.15%";
-                break;
-            case 6:
-                fillerHook.style.width = "85.38%";
-        }
-        if (month == dateT.getMonth()) {
-            for (let i = 0; i <= 31; i++) {
-                if (day == i) {
-                    document.querySelector(".dayNr" + i).classList.add("calendarToday");
-                }
-            }
-        }
-    }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
         month--;
         if (month < 0) {
@@ -264,7 +165,7 @@ function timerApp() {
             year--;
         }
         firstDay = new Date(year, month, 1);
-        cleanDiv();
+        cleanDiv(".calendarInner", "filler");
         calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
@@ -275,9 +176,29 @@ function timerApp() {
             year++;
         }
         firstDay = new Date(year, month, 1);
-        cleanDiv();
+        cleanDiv(".calendarInner", "filler");
         calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
+    }, false)
+    document.querySelector(".redMonthBtnW").addEventListener("click", function () {
+        month--;
+        if (month < 0) {
+            month = 11;
+            year--;
+        }
+        firstDay = new Date(year, month, 1);
+        cleanDiv(".calendarInnerW", "fillerW");
+        calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
+    }, false)
+    document.querySelector(".addMonthBtnW").addEventListener("click", function () {
+        month++;
+        if (month > 11) {
+            month = 0;
+            year++;
+        }
+        firstDay = new Date(year, month, 1);
+        cleanDiv(".calendarInnerW", "fillerW");
+        calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
     }, false)
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
@@ -286,7 +207,7 @@ function timerApp() {
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
         thirdSide.classList.remove("active");
-        cleanDiv();
+        cleanDiv(".calendarInner", "filler");
         calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
@@ -307,7 +228,8 @@ function timerApp() {
         thirdSide.classList.add("active");
         secondSide.classList.remove("active");
         firstSide.classList.remove("active");
-        calendarW();
+        cleanDiv(".calendarInnerW", "fillerW");
+        calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
     }, false)
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
         document.querySelector(".timerW").value--;
