@@ -2,9 +2,7 @@ function timerApp() {
     const secondSide = document.querySelector("#secondSide");
     const firstSide = document.querySelector("#firstSide");
     const conteinerFirstSide = document.querySelector("#conteiner");
-    const conteinerSecondSide = document.querySelector("#dateConteiner")
-    const thirdSide = document.querySelector("#thirdSide");
-    const conteinerThirdSide = document.querySelector("#weightConteiner");
+    const conteinerSecondSide = document.querySelector("#dateConteiner");
 
     function dateStorage() {
         let today = new Date();
@@ -186,59 +184,22 @@ function timerApp() {
         calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
-    document.querySelector(".redMonthBtnW").addEventListener("click", function () {
-        month--;
-        if (month < 0) {
-            month = 11;
-            year--;
-        }
-        firstDay = new Date(year, month, 1);
-        cleanDiv(".calendarInnerW", "fillerW");
-        calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
+    firstSide.addEventListener("click", function () {
+        conteinerFirstSide.classList.remove("displayNone");
+        conteinerSecondSide.classList.remove("displayFlex");
+        firstSide.classList.add("active");
+        secondSide.classList.remove("active");
     }, false)
-    document.querySelector(".addMonthBtnW").addEventListener("click", function () {
-        month++;
-        if (month > 11) {
-            month = 0;
-            year++;
-        }
-        firstDay = new Date(year, month, 1);
-        cleanDiv(".calendarInnerW", "fillerW");
-        calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
-    }, false)
+
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
         conteinerSecondSide.classList.add("displayFlex");
-        conteinerThirdSide.classList.remove("displayFlex");
         secondSide.classList.add("active");
         firstSide.classList.remove("active");
-        thirdSide.classList.remove("active");
         cleanDiv(".calendarInner", "filler");
         calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
     }, false)
-
-    firstSide.addEventListener("click", function () {
-        conteinerFirstSide.classList.remove("displayNone");
-        conteinerSecondSide.classList.remove("displayFlex");
-        conteinerThirdSide.classList.remove("displayFlex");
-        firstSide.classList.add("active");
-        secondSide.classList.remove("active");
-        thirdSide.classList.remove("active");
-    }, false)
-    thirdSide.addEventListener("click", function () {
-        conteinerThirdSide.classList.remove("displayNone");
-        conteinerThirdSide.classList.add("displayFlex");
-        conteinerSecondSide.classList.remove("displayFlex");
-        conteinerFirstSide.classList.add("displayNone");
-        thirdSide.classList.add("active");
-        secondSide.classList.remove("active");
-        firstSide.classList.remove("active");
-        cleanDiv(".calendarInnerW", "fillerW");
-        calendar(".monthHeaderW", ".calendarInnerW", ".fillerW");
-    }, false)
-
-
 
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
         document.querySelector(".timerW").value--;
