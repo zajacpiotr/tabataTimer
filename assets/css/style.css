@@ -230,7 +230,7 @@ input,
 
 #dateConteiner {
     width: 70%;
-    height: 500px;
+    height: 80%;
     background-color: black;
     display: none;
     margin-left: auto;
@@ -291,7 +291,7 @@ ul li a:hover:not(.active) {
     display: flex;
     flex-direction: row;
     background-color: red;
-    width: 30%;
+    width: 50%;
     text-align: center
 }
 
@@ -301,7 +301,7 @@ ul li a:hover:not(.active) {
 }
 
 .calendarInner {
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-flow: row wrap;
 }
@@ -313,14 +313,14 @@ ul li a:hover:not(.active) {
     vertical-align: middle;
     line-height: 36px;
     background-color: crimson;
-    margin: 0.5px;
+    margin: 0.1933%;
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
 }
 
 .outerMonthHeader {
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -339,26 +339,10 @@ ul li a:hover:not(.active) {
 
 }
 
-#weightConteiner {
-    width: 1000px;
-    height: 500px;
-    background-color: black;
-    display: none;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    flex-direction: column;
-}
-
 .calendarToday {
     background-color: darkslateblue;
 }
 
-.calendarInnerW {
-    width: 30%;
-    display: flex;
-    flex-flow: row wrap;
-}
 
 
 /*@media (max-width:900px) {
