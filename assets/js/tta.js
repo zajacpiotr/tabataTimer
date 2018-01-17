@@ -100,6 +100,12 @@ function timerApp() {
                     child.classList.add("calendarDays");
                     child.classList.add("dayNr" + i);
                     checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                    let checking2 = document.querySelector(".dayNr" + i);
+                    const innerChild = document.createElement("div");
+                    innerChild.classList.add("innerDay" + i);
+                    innerChild.classList.add("innerDays");
+                    checking2.insertAdjacentHTML('beforeend', innerChild.outerHTML);
+
                 }
             } else {
                 for (let i = 1; i <= 28; i++) {
