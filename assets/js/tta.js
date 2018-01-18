@@ -100,11 +100,11 @@ function timerApp() {
                     child.classList.add("calendarDays");
                     child.classList.add("dayNr" + i);
                     checking.insertAdjacentHTML('beforeend', child.outerHTML);
-                    let checking2 = document.querySelector(".dayNr" + i);
+                    /*let checking2 = document.querySelector(".dayNr" + i);
                     const innerChild = document.createElement("div");
                     innerChild.classList.add("innerDay" + i);
                     innerChild.classList.add("innerDays");
-                    checking2.insertAdjacentHTML('beforeend', innerChild.outerHTML);
+                    checking2.insertAdjacentHTML('beforeend', innerChild.outerHTML);*/
 
                 }
             } else {
@@ -161,10 +161,12 @@ function timerApp() {
                 }
             }
         }
-        for (let i = 1; i <= 31; i++) {
-            let sanki = document.querySelector(".dayNr" + i);
-            sanki.addEventListener("click", function () {
-                alert(i);
+        let element = document.querySelector(".calendarInner");
+        let numberOfChildren = element.getElementsByTagName("*").length - 1;
+        for (let i = 1; i <= numberOfChildren; i++) {
+            const daysClick = document.querySelector(".dayNr" + i);
+            daysClick.addEventListener("click", function () {
+                alert(numberOfChildren);
             }, false)
         }
     }

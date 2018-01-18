@@ -344,7 +344,8 @@ ul li a:hover:not(.active) {
 }
 
 .innerDays {
-    width: 20px;
+    height: 20px;
+    background-color: aliceblue;
 }
 
 
