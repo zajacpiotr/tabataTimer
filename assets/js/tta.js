@@ -3,6 +3,15 @@ function timerApp() {
     const firstSide = document.querySelector("#firstSide");
     const conteinerFirstSide = document.querySelector("#conteiner");
     const conteinerSecondSide = document.querySelector("#dateConteiner");
+    const addRule = (function (style) { //function which helps adding rules to pseudoselectors
+        const sheet = document.head.appendChild(style).sheet;
+        return function (selector, css) {
+            const propText = Object.keys(css).map(function (p) {
+                return p + ":" + css[p]
+            }).join(";");
+            sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
+        }
+    })(document.createElement("style"));
 
     function dateStorage() {
         let today = new Date();
@@ -161,12 +170,18 @@ function timerApp() {
                 }
             }
         }
-        let element = document.querySelector(".calendarInner");
-        let numberOfChildren = element.getElementsByTagName("*").length - 1;
+        const element = document.querySelector(".calendarInner");
+        const numberOfChildren = element.getElementsByTagName("*").length - 1;
         for (let i = 1; i <= numberOfChildren; i++) {
             const daysClick = document.querySelector(".dayNr" + i);
             daysClick.addEventListener("click", function () {
-                alert(numberOfChildren);
+                document.getElementById("formCont").classList.add("displayFlex");
+                document.getElementById("formCont").classList.remove("displayNone");
+                let rect = daysClick.getBoundingClientRect();
+                let rectTop = rect.top + 40;
+                let rectLeft = rect.left + 40;
+                document.getElementById("formCont").style.setProperty("top", rectTop + "px");
+                document.getElementById("formCont").style.setProperty("left", rectLeft + "px");
             }, false)
         }
     }
@@ -267,7 +282,7 @@ function timerApp() {
                 secondsW++;
                 secondsR++;
                 const textInfo = document.getElementById("textBox");
-                const addRule = (function (style) { //function which helps adding rules to pseudoselectors
+                /*const addRule = (function (style) { //function which helps adding rules to pseudoselectors
                     const sheet = document.head.appendChild(style).sheet;
                     return function (selector, css) {
                         const propText = Object.keys(css).map(function (p) {
@@ -275,7 +290,7 @@ function timerApp() {
                         }).join(";");
                         sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
                     }
-                })(document.createElement("style"));
+                })(document.createElement("style"));*/
 
                 function addClassRest() { //function which toggle on/off animation at rest time
                     const addClassR = document.getElementById("innerAnimation");
