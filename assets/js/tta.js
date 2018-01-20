@@ -170,18 +170,24 @@ function timerApp() {
                 }
             }
         }
+        const formContHook = document.getElementById("formCont")
         const element = document.querySelector(".calendarInner");
         const numberOfChildren = element.getElementsByTagName("*").length - 1;
         for (let i = 1; i <= numberOfChildren; i++) {
             const daysClick = document.querySelector(".dayNr" + i);
             daysClick.addEventListener("click", function () {
-                document.getElementById("formCont").classList.add("displayFlex");
-                document.getElementById("formCont").classList.remove("displayNone");
+                formContHook.classList.add("displayFlex");
+                formContHook.classList.remove("displayNone");
                 let rect = daysClick.getBoundingClientRect();
                 let rectTop = rect.top + 40;
                 let rectLeft = rect.left + 40;
-                document.getElementById("formCont").style.setProperty("top", rectTop + "px");
-                document.getElementById("formCont").style.setProperty("left", rectLeft + "px");
+                formContHook.style.setProperty("top", rectTop + "px");
+                formContHook.style.setProperty("left", rectLeft + "px");
+            }, false)
+            const exitClick = document.getElementById("exitBtn");
+            exitClick.addEventListener("click", function () {
+                formContHook.classList.add("displayNone");
+                formContHook.classList.remove("displayFlex");
             }, false)
         }
     }
