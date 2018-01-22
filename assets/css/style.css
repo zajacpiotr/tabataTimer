@@ -350,10 +350,38 @@ ul li a:hover:not(.active) {
 
 #formCont {
     position: absolute;
-    width: 300px;
-    height: 50px;
-    background-color: azure;
     flex-direction: column;
+    width: 300px;
+    height: 110px;
+    background: linear-gradient(to right, rgba(148, 212, 235, 1) 0%, rgba(113, 206, 239, 1) 24%, rgba(56, 183, 222, 1) 77%, rgba(5, 177, 240, 1) 100%);
+    color: black;
+    font-size: 17px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#innerformCont1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+}
+
+#innerformCont1 > span {
+    margin: 10px;
+    margin-left: 70px;
+    background-color: transparent;
+    font-size: 18px;
+    color: black;
 }
 
 #exitBtn {
@@ -361,8 +389,22 @@ ul li a:hover:not(.active) {
     height: 20px;
     text-align: center;
     vertical-align: middle;
-    line-height: 8px;
+    line-height: 10px;
     align-self: flex-end;
+    margin: 3px 3px 15px 50px;
+    font-size: 12px;
+}
+
+#weightInput {
+    width: 80%;
+    align-self: center;
+    margin-bottom: 3px;
+}
+
+#weightApprv {
+    width: 30px;
+    align-self: center;
+    margin
 }
 
 /*@media (max-width:900px) {
