@@ -190,6 +190,13 @@ function timerApp() {
                 formContHook.classList.remove("displayFlex");
             }, false)
         }
+        const okClick = document.getElementById("weightApprv");
+        const inputWeight = document.getElementById("weightInput");
+        okClick.addEventListener("click", function () {
+            alert(inputWeight.value);
+            formContHook.classList.add("displayNone");
+            formContHook.classList.remove("displayFlex");
+        }, false)
     }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
         month--;
