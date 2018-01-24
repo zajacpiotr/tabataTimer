@@ -202,9 +202,11 @@ function timerApp() {
         }
         const okClick = document.getElementById("weightApprv");
         const inputWeight = document.getElementById("weightInput");
-        const checking23 = document.querySelector(".dayNr" + memory);
+        alert(memory);
+        const checking23 = document.querySelector(".dayNr2");
         okClick.addEventListener("click", function () {
             alert(memory);
+            const checking23 = document.querySelector(".dayNr" + memory);
             checking23.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
             formContHook.classList.add("displayNone");
             formContHook.classList.remove("displayFlex");
