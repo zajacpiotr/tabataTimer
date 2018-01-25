@@ -109,12 +109,6 @@ function timerApp() {
                     child.classList.add("calendarDays");
                     child.classList.add("dayNr" + i);
                     checking.insertAdjacentHTML('beforeend', child.outerHTML);
-                    /*let checking2 = document.querySelector(".dayNr" + i);
-                    const innerChild = document.createElement("div");
-                    innerChild.classList.add("innerDay" + i);
-                    innerChild.classList.add("innerDays");
-                    checking2.insertAdjacentHTML('beforeend', innerChild.outerHTML);*/
-
                 }
             } else {
                 for (let i = 1; i <= 28; i++) {
@@ -173,43 +167,37 @@ function timerApp() {
         const formContHook = document.getElementById("formCont")
         const element = document.querySelector(".calendarInner");
         const numberOfChildren = element.getElementsByTagName("*").length - 1;
+        const inputWeight = document.getElementById("weightInput");
         var memory;
         for (let i = 1; i <= numberOfChildren; i++) {
             const daysClick = document.querySelector(".dayNr" + i);
             daysClick.addEventListener("click", function () {
                 formContHook.classList.add("displayFlex");
                 formContHook.classList.remove("displayNone");
+                inputWeight.value = "";
                 let rect = daysClick.getBoundingClientRect();
                 let rectTop = rect.top + 40;
                 let rectLeft = rect.left + 40;
                 formContHook.style.setProperty("top", rectTop + "px");
                 formContHook.style.setProperty("left", rectLeft + "px");
-                /*const okClick = document.getElementById("weightApprv");
-                const inputWeight = document.getElementById("weightInput");
-                okClick.addEventListener("click", function () {
-                    alert(daysClick);
-                    daysClick.innerHTML = "<p>" + i + "</p>" + "<p>" + inputWeight.value + "</p>";
-                    formContHook.classList.add("displayNone");
-                    formContHook.classList.remove("displayFlex");
-                }, false)*/
+                inputWeight.focus();
                 return memory = i;
             }, false)
             const exitClick = document.getElementById("exitBtn");
             exitClick.addEventListener("click", function () {
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
+                inputWeight.value = "";
             }, false)
         }
         const okClick = document.getElementById("weightApprv");
-        const inputWeight = document.getElementById("weightInput");
-        alert(memory);
-        const checking23 = document.querySelector(".dayNr2");
+
         okClick.addEventListener("click", function () {
-            alert(memory);
-            const checking23 = document.querySelector(".dayNr" + memory);
-            checking23.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
+            const hookDayWeight = document.querySelector(".dayNr" + memory);
+            hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
             formContHook.classList.add("displayNone");
             formContHook.classList.remove("displayFlex");
+            inputWeight.value = "";
         }, false)
     }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
