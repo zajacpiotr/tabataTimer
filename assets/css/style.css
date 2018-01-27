@@ -311,8 +311,7 @@ ul li a:hover:not(.active) {
     height: 36px;
     text-align: center;
     vertical-align: middle;
-
-    background-color: crimson;
+background-color: crimson;
     margin: 0.1933%;
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;

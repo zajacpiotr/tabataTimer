@@ -12,6 +12,8 @@ function timerApp() {
             sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
         }
     })(document.createElement("style"));
+    let len = localStorage.length;
+    let len2 = localStorage.length - 1;
 
     function dateStorage() {
         let today = new Date();
@@ -23,8 +25,7 @@ function timerApp() {
             "two": mm,
             "three": yyyy
         }
-        let len = localStorage.length;
-        let len2 = localStorage.length - 1;
+
         const retrievedObject = localStorage.getItem("date" + len2);
         for (let i = 0; i <= len; i++) {
             if (localStorage["date" + i] == null) {
@@ -191,9 +192,31 @@ function timerApp() {
             }, false)
         }
         const okClick = document.getElementById("weightApprv");
-
         okClick.addEventListener("click", function () {
             const hookDayWeight = document.querySelector(".dayNr" + memory);
+            alert(memory);
+            alert(month);
+            alert(inputWeight.value);
+
+            function dateWeightManager() {
+                todayW = {
+                    "oneW": memory,
+                    "twoW": month,
+                    "threeW": inputWeight.value
+                }
+                const retrievedObjectW = localStorage.getItem("dateW" + len2);
+                for (let i = 0; i <= len; i++) {
+                    if (localStorage["dateW" + i] == null) {
+                        if (retrievedObjectW == JSON.stringify(todayW)) {
+                            return
+                        } else {
+                            localStorage.setItem("dateW" + len, JSON.stringify(todayW))
+                            return
+                        }
+                    }
+                }
+            }
+            dateWeightManager();
             hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
             formContHook.classList.add("displayNone");
             formContHook.classList.remove("displayFlex");
