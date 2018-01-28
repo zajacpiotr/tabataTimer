@@ -27,7 +27,7 @@ function timerApp() {
         }
 
         const retrievedObject = localStorage.getItem("date" + len2);
-        for (let i = 0; i <= len; i++) {
+        for (let i = 1; i <= len + 2; i += 2) {
             if (localStorage["date" + i] == null) {
                 if (retrievedObject == JSON.stringify(today)) {
                     return
@@ -46,15 +46,17 @@ function timerApp() {
     let onceClick = true;
 
     function dayActive() {
-        for (let i = 0; i <= localStorage.length - 1; i++) {
+        for (let i = 1; i <= len + 2; i++) {
             let checkParse = localStorage.getItem("date" + i);
-            checkParse = JSON.parse(checkParse);
-            let checkParseDay = checkParse.one;
-            let checkParseMonth = checkParse.two - 1;
-            let checkParseYear = checkParse.three;
-            for (let j = 0; j <= 31; j++) {
-                if ((checkParseDay == j) && (checkParseMonth == month) && (checkParseYear == year)) {
-                    document.querySelector(".dayNr" + j).classList.add("calendarDaysActive");
+            if (checkParse !== null) {
+                checkParse = JSON.parse(checkParse);
+                let checkParseDay = checkParse.one;
+                let checkParseMonth = checkParse.two - 1;
+                let checkParseYear = checkParse.three;
+                for (let j = 0; j <= 31; j++) {
+                    if ((checkParseDay == j) && (checkParseMonth == month) && (checkParseYear == year)) {
+                        document.querySelector(".dayNr" + j).classList.add("calendarDaysActive");
+                    }
                 }
             }
         }
@@ -194,9 +196,9 @@ function timerApp() {
         const okClick = document.getElementById("weightApprv");
         okClick.addEventListener("click", function () {
             const hookDayWeight = document.querySelector(".dayNr" + memory);
-            alert(memory);
-            alert(month);
-            alert(inputWeight.value);
+            //alert(memory);
+            //alert(month);
+            //alert(inputWeight.value);
 
             function dateWeightManager() {
                 todayW = {
@@ -207,12 +209,21 @@ function timerApp() {
                 const retrievedObjectW = localStorage.getItem("dateW" + len2);
                 for (let i = 0; i <= len; i++) {
                     if (localStorage["dateW" + i] == null) {
-                        if (retrievedObjectW == JSON.stringify(todayW)) {
-                            return
-                        } else {
-                            localStorage.setItem("dateW" + len, JSON.stringify(todayW))
+                        localStorage.setItem("dateW" + i, JSON.stringify(todayW))
+                        return
+                    } else {
+                        let vh1 = localStorage.getItem("dateW" + i);
+                        vh1 = JSON.parse(vh1);
+                        vh2 = vh1.twoW;
+                        vh1 = vh1.oneW;
+                        alert(vh1);
+                        alert(vh2);
+                        if ((todayW.oneW == vh1) && (todayW.oneW == vh2)) {
+                            alert("witamy sie z gaska");
                             return
                         }
+
+
                     }
                 }
             }
