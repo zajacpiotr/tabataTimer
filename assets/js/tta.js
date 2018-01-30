@@ -28,7 +28,7 @@ function timerApp() {
 
         const retrievedObject = localStorage.getItem("date" + len);
         for (let i = 1; i <= len + 2; i += 2) {
-            if (localStorage["date" + i] == null) {
+            if (localStorage.getItem["date" + i] == null) {
                 if (retrievedObject == JSON.stringify(today)) {
                     return
                 } else {
@@ -206,47 +206,35 @@ function timerApp() {
                     "twoW": month,
                     "threeW": inputWeight.value
                 }
-                const retrievedObjectW = localStorage.getItem("dateW" + len2);
-
-                for (let i = 0; i <= len + 2; i += 2) {
+                var memory2;
+                for (let i = 0; i <= len ^ 2; i += 2) {
                     let vh1 = localStorage.getItem("dateW" + i);
-                    alert(i);
-                    if (vh1 !== null) {
-                        alert(vh1);
-                        vh1 = JSON.parse(vh1);
-                        //vh2 = vh1.twoW;
-                        let vhOne = vh1.oneW;
-                        alert(vhOne);
-                        if (localStorage.getItem["dateW" + i] == null) {
-                            alert(JSON.stringify(todayW.oneW));
-                            if (vhOne == JSON.stringify(todayW.oneW)) {
-                                return
+                    let vhx = localStorage.getItem("dateW" + memory2);
+                    alert("vh1" + vh1);
+                    if (vh1 == null) {
+                        if (vhx == null) {
+                            localStorage.setItem("dateW" + i, JSON.stringify(todayW));
+                            return
+                        } else {
+                            vhx2 = JSON.parse(vhx);
+                            vhx = JSON.parse(vhx);
+                            vhx = vhx.oneW;
+                            vhx2 = vhx2.twoW;
+                            if ((vhx == JSON.stringify(todayW.oneW)) && (vhx2 == JSON.stringify(todayW.twoW))) {
+                                localStorage.setItem("dateW" + memory2, JSON.stringify(todayW));
                             } else {
-                                localStorage.setItem("dateW" + i, JSON.stringify(todayW))
-                                return
+                                localStorage.setItem("dateW" + i, JSON.stringify(todayW));
                             }
-
+                            return
                         }
+                    } else {
+                        memory2 = i;
+                        alert("memo" + memory2);
                     }
                 }
-                /*else {
-                                       let vh1 = localStorage.getItem("dateW" + i);
-                                       vh1 = JSON.parse(vh1);
-                                       vh2 = vh1.twoW;
-                                       vh1 = vh1.oneW;
-                                       alert(vh1);
-                                       alert(vh2);
-                                       if ((todayW.oneW == vh1) && (todayW.oneW == vh2)) {
-                                           alert("witamy sie z gaska");
-                                           return
-                                       }
-
-
-                                   }*/
             }
-
             dateWeightManager();
-            hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
+            //hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
             formContHook.classList.add("displayNone");
             formContHook.classList.remove("displayFlex");
             inputWeight.value = "";
