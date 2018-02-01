@@ -25,16 +25,24 @@ function timerApp() {
             "two": mm,
             "three": yyyy
         }
-
-        const retrievedObject = localStorage.getItem("date" + len);
-        for (let i = 1; i <= len + 2; i += 2) {
-            if (localStorage.getItem["date" + i] == null) {
-                if (retrievedObject == JSON.stringify(today)) {
+        var memory;
+        for (let i = 1; i <= len ^ 2; i += 2) {
+            let retrievedObject = localStorage.getItem("date" + i);
+            let retrievedObjectMem = localStorage.getItem("date" + memory);
+            if (retrievedObject == null) {
+                if (retrievedObjectMem == null) {
+                    localStorage.setItem("date" + i, JSON.stringify(today));
                     return
                 } else {
-                    localStorage.setItem("date" + i, JSON.stringify(today))
+                    if (retrievedObjectMem == JSON.stringify(today)) {
+                        localStorage.setItem("date" + memory, JSON.stringify(today));
+                    } else {
+                        localStorage.setItem("date" + i, JSON.stringify(today));
+                    }
                     return
                 }
+            } else {
+                memory = i;
             }
         }
     }
