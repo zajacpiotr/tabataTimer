@@ -48,7 +48,7 @@ function timerApp() {
     }
     let dateT = new Date();
     let day = dateT.getDate();
-    let month = dateT.getMonth();
+    var month = dateT.getMonth();
     let year = dateT.getFullYear();
     let firstDay = new Date(year, month, 1);
     let onceClick = true;
@@ -204,9 +204,6 @@ function timerApp() {
         const okClick = document.getElementById("weightApprv");
         okClick.addEventListener("click", function () {
             const hookDayWeight = document.querySelector(".dayNr" + memory);
-            //alert(memory);
-            //alert(month);
-            //alert(inputWeight.value);
 
             function dateWeightManager() {
                 todayW = {
@@ -218,7 +215,6 @@ function timerApp() {
                 for (let i = 0; i <= len ^ 2; i += 2) {
                     let vh1 = localStorage.getItem("dateW" + i);
                     let vhx = localStorage.getItem("dateW" + memory2);
-                    alert("vh1" + vh1);
                     if (vh1 == null) {
                         if (vhx == null) {
                             localStorage.setItem("dateW" + i, JSON.stringify(todayW));
@@ -237,7 +233,6 @@ function timerApp() {
                         }
                     } else {
                         memory2 = i;
-                        alert("memo" + memory2);
                     }
                 }
             }
@@ -247,6 +242,31 @@ function timerApp() {
             formContHook.classList.remove("displayFlex");
             inputWeight.value = "";
         }, false)
+    }
+
+    function weightAdding() {
+        for (let i = 0; i <= len * 2; i += 2) {
+            let checkWeightLS = localStorage.getItem("dateW" + i);
+            if (checkWeightLS != null) {
+                //alert(checkWeightLS);
+                checkWeightLS = JSON.parse(checkWeightLS);
+                let checkWeightLSDay = checkWeightLS.oneW;
+                let checkWeightLSMonth = checkWeightLS.twoW;
+                let weightLSW = checkWeightLS.threeW;
+                //alert("month" + month);
+                for (let j = 0; j <= 4; j++) {
+                    //alert("j" + j);
+                    //alert("checkWeightLSDay" + checkWeightLSDay);
+                    //alert("month" + month);
+                    //alert("checkWeightLSMonth" + checkWeightLSMonth);
+                    if ((checkWeightLSDay == j) && (checkWeightLSMonth == month)) {
+                        //alert(j);
+                        const sdhb = document.querySelector(".dayNr" + j);
+                        sdhb.innerHTML = "<p>" + j + "</p>" + "<p>" + weightLSW + " kg" + "</p>";
+                    }
+                }
+            }
+        }
     }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
         month--;
@@ -285,6 +305,7 @@ function timerApp() {
         cleanDiv(".calendarInner", "filler");
         calendar(".monthHeader", ".calendarInner", ".filler");
         dayActive();
+        weightAdding();
     }, false)
 
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
