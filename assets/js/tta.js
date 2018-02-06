@@ -220,6 +220,7 @@ function timerApp() {
                             localStorage.setItem("dateW" + i, JSON.stringify(todayW));
                             return
                         } else {
+                            alert(vhx);
                             vhx2 = JSON.parse(vhx);
                             vhx = JSON.parse(vhx);
                             vhx = vhx.oneW;
@@ -237,7 +238,7 @@ function timerApp() {
                 }
             }
             dateWeightManager();
-            hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "</p>";
+            hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
             formContHook.classList.add("displayNone");
             formContHook.classList.remove("displayFlex");
             inputWeight.value = "";
@@ -248,21 +249,14 @@ function timerApp() {
         for (let i = 0; i <= len * 2; i += 2) {
             let checkWeightLS = localStorage.getItem("dateW" + i);
             if (checkWeightLS != null) {
-                //alert(checkWeightLS);
                 checkWeightLS = JSON.parse(checkWeightLS);
                 let checkWeightLSDay = checkWeightLS.oneW;
                 let checkWeightLSMonth = checkWeightLS.twoW;
                 let weightLSW = checkWeightLS.threeW;
-                //alert("month" + month);
                 for (let j = 0; j <= 31; j++) {
-                    //alert("j" + j);
-                    //alert("checkWeightLSDay" + checkWeightLSDay);
-                    //alert("month" + month);
-                    //alert("checkWeightLSMonth" + checkWeightLSMonth);
                     if ((checkWeightLSDay == j) && (checkWeightLSMonth == month)) {
-                        //alert(j);
-                        const sdhb = document.querySelector(".dayNr" + j);
-                        sdhb.innerHTML = "<p>" + j + "</p>" + "<p>" + weightLSW + " kg" + "</p>";
+                        const weightAdd = document.querySelector(".dayNr" + j);
+                        weightAdd.innerHTML = "<p>" + j + "</p>" + "<p>" + weightLSW + " kg" + "</p>";
                     }
                 }
             }

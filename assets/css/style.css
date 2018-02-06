@@ -430,14 +430,14 @@ p:nth-child(2) {
 
 @media (max-width:700px) {
     #dateConteiner {
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
+        width: 95%;
+        margin-left: 4.5%;
+        margin-right: 0.5%;
     }
     .dayOfWeek ul,
     .calendarInner,
     .outerMonthHeader {
-        width: 100%;
+        width: 95%;
     }
 
     /*@media (max-width:700px) {
