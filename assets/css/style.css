@@ -406,6 +406,10 @@ ul li a:hover:not(.active) {
     margin
 }
 
+.activeDay {
+    background-color: darkslategray;
+}
+
 p {
     width: 100%;
     height: 18.625px;

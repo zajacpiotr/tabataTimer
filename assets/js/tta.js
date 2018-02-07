@@ -183,22 +183,27 @@ function timerApp() {
         for (let i = 1; i <= numberOfChildren; i++) {
             const daysClick = document.querySelector(".dayNr" + i);
             daysClick.addEventListener("click", function () {
+                for (let l = 1; l <= numberOfChildren; l++) {
+                    document.querySelector(".dayNr" + l).classList.remove("activeDay");
+                }
+                this.classList.add("activeDay");
                 formContHook.classList.add("displayFlex");
                 formContHook.classList.remove("displayNone");
                 inputWeight.value = "";
                 let rect = daysClick.getBoundingClientRect();
                 let rectTop = rect.top + 40;
-                let rectLeft = rect.left + 40;
+                //let rectLeft = rect.left + 40;
                 formContHook.style.setProperty("top", rectTop + "px");
-                formContHook.style.setProperty("left", rectLeft + "px");
+                //formContHook.style.setProperty("left", rectLeft + "px");
                 inputWeight.focus();
-                return memory = i;
+                memory = i;
             }, false)
             const exitClick = document.getElementById("exitBtn");
             exitClick.addEventListener("click", function () {
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
                 inputWeight.value = "";
+                daysClick.classList.remove("activeDay");
             }, false)
         }
         const okClick = document.getElementById("weightApprv");
@@ -242,6 +247,7 @@ function timerApp() {
             formContHook.classList.add("displayNone");
             formContHook.classList.remove("displayFlex");
             inputWeight.value = "";
+            document.querySelector(".dayNr" + memory).classList.remove("activeDay");
         }, false)
     }
 
