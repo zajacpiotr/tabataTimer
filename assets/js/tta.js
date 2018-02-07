@@ -75,7 +75,7 @@ function timerApp() {
         hookParent.innerHTML = "";
         const child = document.createElement("div");
         child.className = y;
-        hookParent.insertAdjacentHTML('beforeend', child.outerHTML);
+        hookParent.insertAdjacentHTML("beforeend", child.outerHTML);
     }
 
     function calendar(x, y, z) {
@@ -109,7 +109,7 @@ function timerApp() {
                 child.innerHTML = i;
                 child.classList.add("calendarDays");
                 child.classList.add("dayNr" + i);
-                checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                checking.insertAdjacentHTML("beforeend", child.outerHTML);
             }
         } else if (monthNameCheck == monthName[1]) {
             if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
@@ -119,7 +119,7 @@ function timerApp() {
                     child.innerHTML = i;
                     child.classList.add("calendarDays");
                     child.classList.add("dayNr" + i);
-                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                    checking.insertAdjacentHTML("beforeend", child.outerHTML);
                 }
             } else {
                 for (let i = 1; i <= 28; i++) {
@@ -128,7 +128,7 @@ function timerApp() {
                     child.innerHTML = i;
                     child.classList.add("calendarDays");
                     child.classList.add("dayNr" + i);
-                    checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                    checking.insertAdjacentHTML("beforeend", child.outerHTML);
                 }
             }
         } else {
@@ -138,7 +138,7 @@ function timerApp() {
                 child.innerHTML = i;
                 child.classList.add("calendarDays");
                 child.classList.add("dayNr" + i);
-                checking.insertAdjacentHTML('beforeend', child.outerHTML);
+                checking.insertAdjacentHTML("beforeend", child.outerHTML);
             }
         }
         let firstDayCalendar = firstDay.getDay() - 1;
@@ -189,6 +189,7 @@ function timerApp() {
                 this.classList.add("activeDay");
                 formContHook.classList.add("displayFlex");
                 formContHook.classList.remove("displayNone");
+                document.getElementById("infoPopup").innerHTML = "";
                 inputWeight.value = "";
                 let rect = daysClick.getBoundingClientRect();
                 let rectTop = rect.top + 40;
@@ -209,45 +210,49 @@ function timerApp() {
         const okClick = document.getElementById("weightApprv");
         okClick.addEventListener("click", function () {
             const hookDayWeight = document.querySelector(".dayNr" + memory);
-
-            function dateWeightManager() {
-                todayW = {
-                    "oneW": memory,
-                    "twoW": month,
-                    "threeW": inputWeight.value
-                }
-                var memory2;
-                for (let i = 0; i <= len ^ 2; i += 2) {
-                    let vh1 = localStorage.getItem("dateW" + i);
-                    let vhx = localStorage.getItem("dateW" + memory2);
-                    if (vh1 == null) {
-                        if (vhx == null) {
-                            localStorage.setItem("dateW" + i, JSON.stringify(todayW));
-                            return
-                        } else {
-                            alert(vhx);
-                            vhx2 = JSON.parse(vhx);
-                            vhx = JSON.parse(vhx);
-                            vhx = vhx.oneW;
-                            vhx2 = vhx2.twoW;
-                            if ((vhx == JSON.stringify(todayW.oneW)) && (vhx2 == JSON.stringify(todayW.twoW))) {
-                                localStorage.setItem("dateW" + memory2, JSON.stringify(todayW));
-                            } else {
+            if (inputWeight.value == "") {
+                document.getElementById("infoPopup").innerHTML = "podaj wagę";
+                return
+            } else {
+                function dateWeightManager() {
+                    todayW = {
+                        "oneW": memory,
+                        "twoW": month,
+                        "threeW": inputWeight.value
+                    }
+                    var memory2;
+                    for (let i = 0; i <= len ^ 2; i += 2) {
+                        let vh1 = localStorage.getItem("dateW" + i);
+                        let vhx = localStorage.getItem("dateW" + memory2);
+                        if (vh1 == null) {
+                            if (vhx == null) {
                                 localStorage.setItem("dateW" + i, JSON.stringify(todayW));
+                                return
+                            } else {
+                                alert(vhx);
+                                vhx2 = JSON.parse(vhx);
+                                vhx = JSON.parse(vhx);
+                                vhx = vhx.oneW;
+                                vhx2 = vhx2.twoW;
+                                if ((vhx == JSON.stringify(todayW.oneW)) && (vhx2 == JSON.stringify(todayW.twoW))) {
+                                    localStorage.setItem("dateW" + memory2, JSON.stringify(todayW));
+                                } else {
+                                    localStorage.setItem("dateW" + i, JSON.stringify(todayW));
+                                }
+                                return
                             }
-                            return
+                        } else {
+                            memory2 = i;
                         }
-                    } else {
-                        memory2 = i;
                     }
                 }
+                dateWeightManager();
+                hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
+                formContHook.classList.add("displayNone");
+                formContHook.classList.remove("displayFlex");
+                inputWeight.value = "";
+                document.querySelector(".dayNr" + memory).classList.remove("activeDay");
             }
-            dateWeightManager();
-            hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
-            formContHook.classList.add("displayNone");
-            formContHook.classList.remove("displayFlex");
-            inputWeight.value = "";
-            document.querySelector(".dayNr" + memory).classList.remove("activeDay");
         }, false)
     }
 
