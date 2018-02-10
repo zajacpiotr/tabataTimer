@@ -362,6 +362,7 @@ ul li a:hover:not(.active) {
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    z-index: 1000;
 }
 
 #innerformCont1 {
@@ -439,12 +440,18 @@ p:nth-child(2) {
     border: 0.4px solid black;
 }
 
+#graphConteiner {
+    width: 50%;
+    padding-top: 30px;
+}
+
 @media (max-width:700px) {
     #dateConteiner {
         width: 95%;
         margin-left: 4.5%;
         margin-right: 0.5%;
     }
+    #graphConteiner,
     .dayOfWeek ul,
     .calendarInner,
     .outerMonthHeader {
