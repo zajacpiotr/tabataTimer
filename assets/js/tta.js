@@ -276,37 +276,47 @@ function timerApp() {
 
     function graph() {
         var container = document.getElementById("graphConteiner");
-        var items = [
-            {
-                x: '2014-06-11',
-                y: 10
-            },
-            {
-                x: '2014-06-12',
-                y: 25
-            },
-            {
-                x: '2014-06-13',
-                y: 30
-            },
-            {
-                x: '2014-06-14',
-                y: 10
-            },
-            {
-                x: '2014-06-15',
-                y: 15
-            },
-            {
-                x: '2014-06-16',
-                y: 50
-            }
-  ];
+        /*var items = [{
+            x: "2018-02-03",
+            y: 10
+        }, {
+            x: "2018-02-07",
+            y: 25
+        }, {
+            x: "2018-02-08",
+            y: 30
+        }, ];*/
+        var items = [];
+        for (let i = 0; i <= 6; i += 2) {
+            let checkWeightLS = localStorage.getItem("dateW" + i);
+            alert("yo")
+            if (checkWeightLS != null) {
+                checkWeightLS = JSON.parse(checkWeightLS);
+                let checkWeightLSDay = checkWeightLS.oneW;
+                let checkWeightLSMonth = checkWeightLS.twoW;
+                let weightLSW = checkWeightLS.threeW;
+                //var obj = eval('{ x: ' + '"2018-' + '0' + checkWeightLSMonth + '-' + '0' + checkWeightLSDay + '", y: ' + weightLSW + ' }');
+                var obj = {
+                    //x: '"2018-' + '0' + checkWeightLSMonth + '-' + '0' + checkWeightLSDay + '", y: ' + weightLSW
+                    x: "2018-01-0" + checkWeightLSDay,
+                    y: weightLSW
+                };
+                alert(JSON.stringify(obj));
+                items.push(obj);
+                //zmiana string na object
 
+
+            }
+        }
+        /*var itemFirst = new Object();
+        itemFirst.x = '2018-02-03';
+        itemFirst.y = 10;
+*/
+        alert(items);
         var dataset = new vis.DataSet(items);
         var options = {
-            start: '2014-06-10',
-            end: '2014-06-18'
+            start: '2018-01-01',
+            end: '2018-01-10'
         };
         var graph2d = new vis.Graph2d(container, dataset, options);
     }
