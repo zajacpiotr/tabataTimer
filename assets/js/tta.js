@@ -275,50 +275,35 @@ function timerApp() {
     }
 
     function graph() {
-        var container = document.getElementById("graphConteiner");
-        /*var items = [{
-            x: "2018-02-03",
-            y: 10
-        }, {
-            x: "2018-02-07",
-            y: 25
-        }, {
-            x: "2018-02-08",
-            y: 30
-        }, ];*/
-        var items = [];
+        const container = document.getElementById("graphConteiner");
+        let items = [];
         for (let i = 0; i <= 6; i += 2) {
             let checkWeightLS = localStorage.getItem("dateW" + i);
             alert("yo")
             if (checkWeightLS != null) {
                 checkWeightLS = JSON.parse(checkWeightLS);
                 let checkWeightLSDay = checkWeightLS.oneW;
-                let checkWeightLSMonth = checkWeightLS.twoW;
+                let checkWeightLSMonth = checkWeightLS.twoW + 1;
                 let weightLSW = checkWeightLS.threeW;
-                //var obj = eval('{ x: ' + '"2018-' + '0' + checkWeightLSMonth + '-' + '0' + checkWeightLSDay + '", y: ' + weightLSW + ' }');
-                var obj = {
-                    //x: '"2018-' + '0' + checkWeightLSMonth + '-' + '0' + checkWeightLSDay + '", y: ' + weightLSW
-                    x: "2018-01-0" + checkWeightLSDay,
+                let obj = {
+                    x: "2018-0" + checkWeightLSMonth + "-0" + checkWeightLSDay, // validation for bigger than 9
                     y: weightLSW
                 };
                 alert(JSON.stringify(obj));
                 items.push(obj);
-                //zmiana string na object
-
-
             }
         }
-        /*var itemFirst = new Object();
-        itemFirst.x = '2018-02-03';
-        itemFirst.y = 10;
-*/
         alert(items);
-        var dataset = new vis.DataSet(items);
-        var options = {
-            start: '2018-01-01',
-            end: '2018-01-10'
+        let dataset = new vis.DataSet(items);
+        let firstWeightDate = localStorage.getItem("dateW0");
+        firstWeightDate = JSON.parse(firstWeightDate);
+        let firstWeightDateDay = firstWeightDate.oneW - 3;
+        let firstWeightDateMonth = firstWeightDate.twoW + 1;
+        let options = {
+            start: "2018-0" + firstWeightDateMonth + "-0" + firstWeightDateDay,
+            end: '2018-02-10'
         };
-        var graph2d = new vis.Graph2d(container, dataset, options);
+        const graph2d = new vis.Graph2d(container, dataset, options);
     }
     document.querySelector(".redMonthBtn").addEventListener("click", function () {
         month--;
