@@ -277,18 +277,36 @@ function timerApp() {
     function graph() {
         const container = document.getElementById("graphConteiner");
         let items = [];
-        for (let i = 0; i <= 6; i += 2) {
+        for (let i = 0; i <= len * 2; i += 2) {
             let checkWeightLS = localStorage.getItem("dateW" + i);
-            alert("yo")
+            alert("check")
             if (checkWeightLS != null) {
                 checkWeightLS = JSON.parse(checkWeightLS);
                 let checkWeightLSDay = checkWeightLS.oneW;
                 let checkWeightLSMonth = checkWeightLS.twoW + 1;
                 let weightLSW = checkWeightLS.threeW;
-                let obj = {
-                    x: "2018-0" + checkWeightLSMonth + "-0" + checkWeightLSDay, // validation for bigger than 9
-                    y: weightLSW
-                };
+                if ((checkWeightLSDay > 9) && (checkWeightLSMonth > 9)) {
+                    var obj = {
+                        x: "2018-" + checkWeightLSMonth + "-" + checkWeightLSDay, // validation for bigger than 9
+                        y: weightLSW
+                    };
+                } else if ((checkWeightLSDay > 9) && (checkWeightLSMonth <= 9)) {
+                    //alert("check1") doesnt work while day > 10
+                    var obj = {
+                        x: "2018-0" + checkWeightLSMonth + "-" + checkWeightLSDay, // validation for bigger than 9
+                        y: weightLSW
+                    };
+                } else if ((checkWeightLSDay <= 9) && (checkWeightLSMonth > 9)) {
+                    var obj = {
+                        x: "2018-" + checkWeightLSMonth + "-0" + checkWeightLSDay, // validation for bigger than 9
+                        y: weightLSW
+                    };
+                } else {
+                    var obj = {
+                        x: "2018-0" + checkWeightLSMonth + "-0" + checkWeightLSDay, // validation for bigger than 9
+                        y: weightLSW
+                    };
+                }
                 alert(JSON.stringify(obj));
                 items.push(obj);
             }
@@ -301,7 +319,7 @@ function timerApp() {
         let firstWeightDateMonth = firstWeightDate.twoW + 1;
         let options = {
             start: "2018-0" + firstWeightDateMonth + "-0" + firstWeightDateDay,
-            end: '2018-02-10'
+            end: "2018-02-14"
         };
         const graph2d = new vis.Graph2d(container, dataset, options);
     }
