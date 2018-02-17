@@ -318,33 +318,29 @@ function timerApp() {
             firstWeightDate = JSON.parse(firstWeightDate);
             let firstWeightDateDay = firstWeightDate.oneW - 3;
             let firstWeightDateMonth = firstWeightDate.twoW + 1;
-            alert("month: " + firstWeightDateMonth);
+            firstWeightDateMonth = ("0" + firstWeightDateMonth).slice(-2);
+            firstWeightDateDay = ("0" + firstWeightDateDay).slice(-2);
             var memory3;
             for (let i = 0; i <= len * 2; i += 2) {
                 let checkDate = localStorage.getItem("dateW" + i);
                 let lastDate = localStorage.getItem("dateW" + memory3);
                 if (checkDate == null) {
-                    alert("checkDate: " + checkDate);
-                    if (lastDate == null) {
-                        alert("null" + lastDate);
-                    } else {
-                        alert("lastDate" + lastDate); //change to find last stored date
+                    if (lastDate != null) {
                         var lastWeightDateDay = JSON.parse(lastDate);
                         var lastWeightDateMonth = JSON.parse(lastDate);
                         lastWeightDateDay = lastWeightDateDay.oneW + 3;
                         lastWeightDateMonth = lastWeightDateMonth.twoW + 1;
-                        alert(lastWeightDateDay);
-                        alert(lastWeightDateMonth);
                         //return
                     }
                 } else {
                     memory3 = i;
-                    alert(memory3);
                 }
             }
+            lastWeightDateMonth = ("0" + lastWeightDateMonth).slice(-2);
+            lastWeightDateDay = ("0" + lastWeightDateDay).slice(-2);
             var options = {
-                start: "2018-0" + firstWeightDateMonth + "-0" + firstWeightDateDay,
-                end: "2018-0" + lastWeightDateMonth + "-" + lastWeightDateDay,
+                start: "2018-" + firstWeightDateMonth + "-" + firstWeightDateDay,
+                end: "2018-" + lastWeightDateMonth + "-" + lastWeightDateDay,
                 //end: "2018-02-14",
             };
         }
