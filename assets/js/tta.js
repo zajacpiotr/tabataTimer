@@ -315,37 +315,37 @@ function timerApp() {
 
         let firstWeightDate = localStorage.getItem("dateW0");
         if (firstWeightDate != null) {
-            alert("yo");
             firstWeightDate = JSON.parse(firstWeightDate);
             let firstWeightDateDay = firstWeightDate.oneW - 3;
             let firstWeightDateMonth = firstWeightDate.twoW + 1;
+            alert("month: " + firstWeightDateMonth);
             var memory3;
-            for (let i = 0; i <= len ^ 2; i += 2) {
-                let vh1 = localStorage.getItem("dateW" + i);
-                let vhx = localStorage.getItem("dateW" + memory3);
-                if (vh1 == null) {
-                    if (vhx == null) {
-                        return
+            for (let i = 0; i <= len * 2; i += 2) {
+                let checkDate = localStorage.getItem("dateW" + i);
+                let lastDate = localStorage.getItem("dateW" + memory3);
+                if (checkDate == null) {
+                    alert("checkDate: " + checkDate);
+                    if (lastDate == null) {
+                        alert("null" + lastDate);
                     } else {
-                        alert(vhx); //change to find last stored date
-                        vhx2 = JSON.parse(vhx);
-                        vhx = JSON.parse(vhx);
-                        vhx = vhx.oneW;
-                        vhx2 = vhx2.twoW;
-                        if ((vhx == JSON.stringify(todayW.oneW)) && (vhx2 == JSON.stringify(todayW.twoW))) {
-                            localStorage.setItem("dateW" + memory2, JSON.stringify(todayW));
-                        } else {
-                            localStorage.setItem("dateW" + i, JSON.stringify(todayW));
-                        }
-                        return
+                        alert("lastDate" + lastDate); //change to find last stored date
+                        var lastWeightDateDay = JSON.parse(lastDate);
+                        var lastWeightDateMonth = JSON.parse(lastDate);
+                        lastWeightDateDay = lastWeightDateDay.oneW + 3;
+                        lastWeightDateMonth = lastWeightDateMonth.twoW + 1;
+                        alert(lastWeightDateDay);
+                        alert(lastWeightDateMonth);
+                        //return
                     }
                 } else {
                     memory3 = i;
+                    alert(memory3);
                 }
             }
             var options = {
                 start: "2018-0" + firstWeightDateMonth + "-0" + firstWeightDateDay,
-                end: "2018-02-14"
+                end: "2018-0" + lastWeightDateMonth + "-" + lastWeightDateDay,
+                //end: "2018-02-14",
             };
         }
         const graph2d = new vis.Graph2d(container, dataset, options);
