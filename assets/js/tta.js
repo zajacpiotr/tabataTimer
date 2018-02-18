@@ -279,40 +279,21 @@ function timerApp() {
         let items = [];
         for (let i = 0; i <= len * 2; i += 2) {
             let checkWeightLS = localStorage.getItem("dateW" + i);
-            //alert("check")
             if (checkWeightLS != null) {
                 checkWeightLS = JSON.parse(checkWeightLS);
                 let checkWeightLSDay = checkWeightLS.oneW;
                 let checkWeightLSMonth = checkWeightLS.twoW + 1;
                 let weightLSW = checkWeightLS.threeW;
-                if ((checkWeightLSDay > 9) && (checkWeightLSMonth > 9)) {
-                    var obj = {
-                        x: "2018-" + checkWeightLSMonth + "-" + checkWeightLSDay,
-                        y: weightLSW
-                    };
-                } else if ((checkWeightLSDay > 9) && (checkWeightLSMonth <= 9)) {
-                    var obj = {
-                        x: "2018-0" + checkWeightLSMonth + "-" + checkWeightLSDay,
-                        y: weightLSW
-                    };
-                } else if ((checkWeightLSDay <= 9) && (checkWeightLSMonth > 9)) {
-                    var obj = {
-                        x: "2018-" + checkWeightLSMonth + "-0" + checkWeightLSDay,
-                        y: weightLSW
-                    };
-                } else {
-                    var obj = {
-                        x: "2018-0" + checkWeightLSMonth + "-0" + checkWeightLSDay,
-                        y: weightLSW
-                    };
-                }
-                //alert(JSON.stringify(obj));
+                checkWeightLSDay = ("0" + checkWeightLSDay).slice(-2);
+                checkWeightLSMonth = ("0" + checkWeightLSMonth).slice(-2);
+                var obj = {
+                    x: "2018-" + checkWeightLSMonth + "-" + checkWeightLSDay,
+                    y: weightLSW
+                };
                 items.push(obj);
             }
         }
-        alert(items);
         let dataset = new vis.DataSet(items);
-
         let firstWeightDate = localStorage.getItem("dateW0");
         if (firstWeightDate != null) {
             firstWeightDate = JSON.parse(firstWeightDate);
@@ -330,7 +311,6 @@ function timerApp() {
                         var lastWeightDateMonth = JSON.parse(lastDate);
                         lastWeightDateDay = lastWeightDateDay.oneW + 3;
                         lastWeightDateMonth = lastWeightDateMonth.twoW + 1;
-                        //return
                     }
                 } else {
                     memory3 = i;
@@ -341,7 +321,6 @@ function timerApp() {
             var options = {
                 start: "2018-" + firstWeightDateMonth + "-" + firstWeightDateDay,
                 end: "2018-" + lastWeightDateMonth + "-" + lastWeightDateDay,
-                //end: "2018-02-14",
             };
         }
         const graph2d = new vis.Graph2d(container, dataset, options);
