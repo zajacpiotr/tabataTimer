@@ -247,6 +247,7 @@ function timerApp() {
                     }
                 }
                 dateWeightManager();
+                graph();
                 hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
@@ -276,6 +277,7 @@ function timerApp() {
 
     function graph() {
         const container = document.getElementById("graphConteiner");
+        container.innerHTML = "";
         let items = [];
         for (let i = 0; i <= len * 2; i += 2) {
             let checkWeightLS = localStorage.getItem("dateW" + i);
@@ -321,6 +323,8 @@ function timerApp() {
             var options = {
                 start: "2018-" + firstWeightDateMonth + "-" + firstWeightDateDay,
                 end: "2018-" + lastWeightDateMonth + "-" + lastWeightDateDay,
+                moveable: "false",
+                zoomable: "false",
             };
         }
         const graph2d = new vis.Graph2d(container, dataset, options);
