@@ -186,18 +186,22 @@ function timerApp() {
                 for (let l = 1; l <= numberOfChildren; l++) {
                     document.querySelector(".dayNr" + l).classList.remove("activeDay");
                 }
-                this.classList.add("activeDay");
-                formContHook.classList.add("displayFlex");
-                formContHook.classList.remove("displayNone");
-                document.getElementById("infoPopup").innerHTML = "";
-                inputWeight.value = "";
-                let rect = daysClick.getBoundingClientRect();
-                let rectTop = rect.top + 40;
-                //let rectLeft = rect.left + 40;
-                formContHook.style.setProperty("top", rectTop + "px");
-                //formContHook.style.setProperty("left", rectLeft + "px");
-                inputWeight.focus();
-                memory = i;
+                if (i == day) {
+                    this.classList.add("activeDay");
+                    formContHook.classList.add("displayFlex");
+                    formContHook.classList.remove("displayNone");
+                    document.getElementById("infoPopup").innerHTML = "";
+                    inputWeight.value = "";
+                    let rect = daysClick.getBoundingClientRect();
+                    let rectTop = rect.top + 40;
+                    //let rectLeft = rect.left + 40;
+                    formContHook.style.setProperty("top", rectTop + "px");
+                    //formContHook.style.setProperty("left", rectLeft + "px");
+                    inputWeight.focus();
+                    memory = i;
+                } else {
+                    return
+                }
             }, false)
             const exitClick = document.getElementById("exitBtn");
             exitClick.addEventListener("click", function () {
