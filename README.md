@@ -9,4 +9,4 @@ this part contains: calendar on which mark days when You trained and day actual 
 
 Enjoy
 Autor:
-Zając Piotr
+# Zając Piotr
