@@ -8,5 +8,5 @@ main part of app, we can set time for workout, rest time and numbers of interval
 this part contains: calendar on which mark days when You trained and day actual weight, graph on which show weight.
 
 Enjoy
-Autor:
+
 ### Zając Piotr
