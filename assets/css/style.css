@@ -442,7 +442,7 @@ p:nth-child(2) {
 
 #graphConteiner {
     width: 50%;
-    padding-top: 30px;
+    padding-top: 5px;
     height: 50px;
 }
 
@@ -458,8 +458,15 @@ p:nth-child(2) {
     .outerMonthHeader {
         width: 95%;
     }
+}
 
-    /*@media (max-width:700px) {
+@media (max-width:870px) {
+    p {
+        font-size: 13px;
+    }
+}
+
+/*@media (max-width:700px) {
     #outerAnimation {
         left: 0%;
     }

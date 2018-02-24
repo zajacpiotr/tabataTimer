@@ -54,7 +54,7 @@ function timerApp() {
     let onceClick = true;
 
     function dayActive() {
-        for (let i = 1; i <= len + 2; i++) {
+        for (let i = 1; i <= len * 2; i++) {
             let checkParse = localStorage.getItem("date" + i);
             if (checkParse !== null) {
                 checkParse = JSON.parse(checkParse);
@@ -327,8 +327,9 @@ function timerApp() {
             var options = {
                 start: "2018-" + firstWeightDateMonth + "-" + firstWeightDateDay,
                 end: "2018-" + lastWeightDateMonth + "-" + lastWeightDateDay,
-                moveable: "false",
-                zoomable: "false",
+                drawPoints: {
+                    style: "circle",
+                }
             };
         }
         const graph2d = new vis.Graph2d(container, dataset, options);
