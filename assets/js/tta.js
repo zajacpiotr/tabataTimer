@@ -15,7 +15,7 @@ function timerApp() {
     let len = localStorage.length;
     let len2 = localStorage.length - 1;
 
-    function dateStorage() {
+    function storeDate() {
         let today = new Date();
         let dd = today.getDate();
         let mm = today.getMonth() + 1;
@@ -53,7 +53,7 @@ function timerApp() {
     let firstDay = new Date(year, month, 1);
     let onceClick = true;
 
-    function dayActive() {
+    function makeDayActive() {
         for (let i = 1; i <= len * 2; i++) {
             let checkParse = localStorage.getItem("date" + i);
             if (checkParse !== null) {
@@ -78,7 +78,7 @@ function timerApp() {
         hookParent.insertAdjacentHTML("beforeend", child.outerHTML);
     }
 
-    function calendar(x, y, z) {
+    function makeCalendar(x, y, z) {
         let weekday = new Array();
         weekday[0] = "Poniedziałek";
         weekday[1] = "Wtorek";
@@ -181,8 +181,8 @@ function timerApp() {
         const inputWeight = document.getElementById("weightInput");
         var memory;
         for (let i = 1; i <= numberOfChildren; i++) {
-            const daysClick = document.querySelector(".dayNr" + i);
-            daysClick.addEventListener("click", function () {
+            const clickDay = document.querySelector(".dayNr" + i);
+            clickDay.addEventListener("click", function () {
                 for (let l = 1; l <= numberOfChildren; l++) {
                     document.querySelector(".dayNr" + l).classList.remove("activeDay");
                 }
@@ -192,33 +192,31 @@ function timerApp() {
                     formContHook.classList.remove("displayNone");
                     document.getElementById("infoPopup").innerHTML = "";
                     inputWeight.value = "";
-                    let rect = daysClick.getBoundingClientRect();
+                    let rect = clickDay.getBoundingClientRect();
                     let rectTop = rect.top + 40;
-                    //let rectLeft = rect.left + 40;
                     formContHook.style.setProperty("top", rectTop + "px");
-                    //formContHook.style.setProperty("left", rectLeft + "px");
                     inputWeight.focus();
                     memory = i;
                 } else {
                     return
                 }
             }, false)
-            const exitClick = document.getElementById("exitBtn");
-            exitClick.addEventListener("click", function () {
+            const clickExit = document.getElementById("exitBtn");
+            clickExit.addEventListener("click", function () {
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
                 inputWeight.value = "";
-                daysClick.classList.remove("activeDay");
+                clickDay.classList.remove("activeDay");
             }, false)
         }
-        const okClick = document.getElementById("weightApprv");
-        okClick.addEventListener("click", function () {
+        const clickOk = document.getElementById("weightApprv");
+        clickOk.addEventListener("click", function () {
             const hookDayWeight = document.querySelector(".dayNr" + memory);
             if (inputWeight.value == "") {
                 document.getElementById("infoPopup").innerHTML = "podaj wagę";
                 return
             } else {
-                function dateWeightManager() {
+                function storeWeight() {
                     todayW = {
                         "oneW": memory,
                         "twoW": month,
@@ -250,8 +248,8 @@ function timerApp() {
                         }
                     }
                 }
-                dateWeightManager();
-                graph();
+                storeWeight();
+                makeGraph();
                 hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
@@ -261,7 +259,7 @@ function timerApp() {
         }, false)
     }
 
-    function weightAdding() {
+    function addWeightToCalendar() {
         for (let i = 0; i <= len * 2; i += 2) {
             let checkWeightLS = localStorage.getItem("dateW" + i);
             if (checkWeightLS != null) {
@@ -279,7 +277,7 @@ function timerApp() {
         }
     }
 
-    function graph() {
+    function makeGraph() {
         const container = document.getElementById("graphConteiner");
         container.innerHTML = "";
         let items = [];
@@ -342,9 +340,9 @@ function timerApp() {
         }
         firstDay = new Date(year, month, 1);
         cleanDiv(".calendarInner", "filler");
-        calendar(".monthHeader", ".calendarInner", ".filler");
-        dayActive();
-        weightAdding();
+        makeCalendar(".monthHeader", ".calendarInner", ".filler");
+        makeDayActive();
+        addWeightToCalendar();
     }, false)
     document.querySelector(".addMonthBtn").addEventListener("click", function () {
         month++;
@@ -354,27 +352,27 @@ function timerApp() {
         }
         firstDay = new Date(year, month, 1);
         cleanDiv(".calendarInner", "filler");
-        calendar(".monthHeader", ".calendarInner", ".filler");
-        dayActive();
-        weightAdding();
+        makeCalendar(".monthHeader", ".calendarInner", ".filler");
+        makeDayActive();
+        addWeightToCalendar();
     }, false)
     firstSide.addEventListener("click", function () {
         conteinerFirstSide.classList.remove("displayNone");
         conteinerSecondSide.classList.remove("displayFlex");
-        firstSide.classList.add("active");
+        this.classList.add("active");
         secondSide.classList.remove("active");
     }, false)
 
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
         conteinerSecondSide.classList.add("displayFlex");
-        secondSide.classList.add("active");
+        this.classList.add("active");
         firstSide.classList.remove("active");
         cleanDiv(".calendarInner", "filler");
-        calendar(".monthHeader", ".calendarInner", ".filler");
-        dayActive();
-        weightAdding();
-        graph();
+        makeCalendar(".monthHeader", ".calendarInner", ".filler");
+        makeDayActive();
+        addWeightToCalendar();
+        makeGraph();
     }, false)
 
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
@@ -435,15 +433,6 @@ function timerApp() {
                 secondsW++;
                 secondsR++;
                 const textInfo = document.getElementById("textBox");
-                /*const addRule = (function (style) { //function which helps adding rules to pseudoselectors
-                    const sheet = document.head.appendChild(style).sheet;
-                    return function (selector, css) {
-                        const propText = Object.keys(css).map(function (p) {
-                            return p + ":" + css[p]
-                        }).join(";");
-                        sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
-                    }
-                })(document.createElement("style"));*/
 
                 function addClassRest() { //function which toggle on/off animation at rest time
                     const addClassR = document.getElementById("innerAnimation");
@@ -530,7 +519,7 @@ function timerApp() {
                             buttonsOn();
                             addClassRest();
                             const alertEnd = document.getElementById("endAlert").play();
-                            dateStorage();
+                            storeDate();
                         } else {
                             counterW(); // after rest time initiate a workout function
                             secondsR = inputR.value;
