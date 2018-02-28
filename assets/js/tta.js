@@ -12,6 +12,7 @@ function timerApp() {
             sheet.insertRule(selector + "{" + propText + "}", sheet.cssRules.length);
         }
     })(document.createElement("style"));
+
     let len = localStorage.length;
     let len2 = localStorage.length - 1;
 
