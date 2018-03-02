@@ -224,7 +224,7 @@ function timerApp() {
                         "threeW": inputWeight.value
                     }
                     var memory2;
-                    for (let i = 0; i <= len ^ 2; i += 2) {
+                    for (let i = 2; i <= len ^ 2; i += 2) {
                         let vh1 = localStorage.getItem("dateW" + i);
                         let vhx = localStorage.getItem("dateW" + memory2);
                         if (vh1 == null) {
@@ -250,12 +250,12 @@ function timerApp() {
                     }
                 }
                 storeWeight();
-                makeGraph();
                 hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
                 inputWeight.value = "";
                 document.querySelector(".dayNr" + memory).classList.remove("activeDay");
+                makeGraph();
             }
         }, false)
     }
@@ -327,7 +327,7 @@ function timerApp() {
                 start: "2018-" + firstWeightDateMonth + "-" + firstWeightDateDay,
                 end: "2018-" + lastWeightDateMonth + "-" + lastWeightDateDay,
                 drawPoints: {
-                    style: "circle",
+                    style: "circle"
                 }
             };
         }
@@ -443,8 +443,12 @@ function timerApp() {
                 function addClassWorkout() { //function which toggle on/off animation at workout time
                     document.getElementById("outerAnimation").classList.toggle("animateW");
                     const str = secondsW - 2;
-                    document.styleSheets[0].addRule('.animateW:after', "animation-duration:" + str + "s");
-                    document.styleSheets[0].addRule('.animateW:before', "animation-duration:" + str + "s");
+                    let changePseudoSelectorA = document.head.appendChild(document.createElement("style"));
+                    let changePseudoSelectorB = document.head.appendChild(document.createElement("style"));
+                    changePseudoSelectorA.innerHTML = '.animateW:after {animation-duration: ' + str + 's;}';
+                    changePseudoSelectorB.innerHTML = '.animateW:before {animation-duration:' + str + 's;}';
+                    //document.styleSheets[1].addRule('.animateW:after', "animation-duration:" + str + "s");
+                    //document.styleSheets[1].addRule('.animateW:before', "animation-duration:" + str + "s");
                 };
                 intervals();
 
@@ -497,8 +501,12 @@ function timerApp() {
                             const addClassW = document.getElementById("outerAnimation");
                             addClassW.classList.toggle("animateW");
                             const str = secondsR - 2;
-                            document.styleSheets[0].addRule('.animateR:after', "animation-duration:" + str + "s");
-                            document.styleSheets[0].addRule('.animateR:before', "animation-duration:" + str + "s");
+                            let changePseudoSelectorA = document.head.appendChild(document.createElement("style"));
+                            let changePseudoSelectorB = document.head.appendChild(document.createElement("style"));
+                            changePseudoSelectorA.innerHTML = '.animateR:after {animation-duration: ' + str + 's;}';
+                            changePseudoSelectorB.innerHTML = '.animateR:before {animation-duration:' + str + 's;}';
+                            //document.styleSheets[1].addRule('.animateR:after', "animation-duration:" + str + "s");
+                            //document.styleSheets[1].addRule('.animateR:before', "animation-duration:" + str + "s");
                             alertPlay();
                         }
                     }
