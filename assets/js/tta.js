@@ -78,6 +78,9 @@ function timerApp() {
         child.className = y;
         hookParent.insertAdjacentHTML("beforeend", child.outerHTML);
     }
+    document.getElementById("clearLocalStorageBtn").addEventListener("click", function () {
+        localStorage.clear();
+    }, false);
 
     function makeCalendar(x, y, z) {
         let weekday = new Array();
