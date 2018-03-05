@@ -78,9 +78,6 @@ function timerApp() {
         child.className = y;
         hookParent.insertAdjacentHTML("beforeend", child.outerHTML);
     }
-    document.getElementById("clearLocalStorageBtn").addEventListener("click", function () {
-        localStorage.clear();
-    }, false);
 
     function makeCalendar(x, y, z) {
         let weekday = new Array();
@@ -232,8 +229,14 @@ function timerApp() {
                         let vhx = localStorage.getItem("dateW" + memory2);
                         if (vh1 == null) {
                             if (vhx == null) {
-                                localStorage.setItem("dateW" + i, JSON.stringify(todayW));
-                                return
+                                alert(todayW.oneW);
+                                if (todayW.oneW == undefined) {
+                                    window.location.reload(true);
+                                    return
+                                } else {
+                                    localStorage.setItem("dateW" + i, JSON.stringify(todayW));
+                                    return
+                                }
                             } else {
                                 alert(vhx);
                                 vhx2 = JSON.parse(vhx);
@@ -253,12 +256,13 @@ function timerApp() {
                     }
                 }
                 storeWeight();
+                makeGraph();
                 hookDayWeight.innerHTML = "<p>" + memory + "</p>" + "<p>" + inputWeight.value + "kg" + "</p>";
                 formContHook.classList.add("displayNone");
                 formContHook.classList.remove("displayFlex");
                 inputWeight.value = "";
                 document.querySelector(".dayNr" + memory).classList.remove("activeDay");
-                makeGraph();
+
             }
         }, false)
     }
@@ -366,7 +370,6 @@ function timerApp() {
         this.classList.add("active");
         secondSide.classList.remove("active");
     }, false)
-
     secondSide.addEventListener("click", function () {
         conteinerFirstSide.classList.add("displayNone");
         conteinerSecondSide.classList.add("displayFlex");
@@ -378,7 +381,14 @@ function timerApp() {
         addWeightToCalendar();
         makeGraph();
     }, false)
-
+    document.getElementById("clearLocalStorageBtn").addEventListener("click", function () {
+        localStorage.clear();
+        cleanDiv(".calendarInner", "filler");
+        makeCalendar(".monthHeader", ".calendarInner", ".filler");
+        makeDayActive();
+        addWeightToCalendar();
+        makeGraph();
+    }, false);
     document.querySelector(".redSecWBtn").addEventListener("click", function () {
         document.querySelector(".timerW").value--;
     }, false)
