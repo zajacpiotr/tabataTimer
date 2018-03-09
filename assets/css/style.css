@@ -239,6 +239,13 @@ input,
     flex-direction: column;
 }
 
+#dateConteiner > h1 {
+    width: 50%;
+    text-align: center;
+    font-size: 23px;
+    margin: 5px 0;
+}
+
 .displayFlex {
     display: flex !important;
 }
