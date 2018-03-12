@@ -153,10 +153,6 @@ function timerApp() {
         const graph2d = new vis.Graph2d(container, dataset, options);
     }
 
-    function cos() {
-
-    }
-
     function makeCalendar(x, y, z) {
         let weekday = new Array();
         weekday[0] = "Poniedziałek";
@@ -312,19 +308,6 @@ function timerApp() {
                                     return
                                 } else {
                                     localStorage.setItem("dateW" + i, JSON.stringify(todayW));
-                                    window.location.reload(true);
-                                    alert("1");
-                                    conteinerFirstSide.classList.add("displayNone");
-                                    conteinerSecondSide.classList.add("displayFlex");
-                                    //this.classList.add("active");
-                                    firstSide.classList.remove("active");
-                                    alert("2");
-                                    cleanDiv(".calendarInner", "filler");
-                                    makeCalendar(".monthHeader", ".calendarInner", ".filler");
-                                    makeDayActive();
-                                    addWeightToCalendar();
-                                    makeGraph();
-                                    alert("3");
                                     return
                                 }
                             } else {
