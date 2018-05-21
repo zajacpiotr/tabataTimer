@@ -7,6 +7,8 @@
  * #### calendar:
  this part contains: calendar on which mark days when You trained (yellow border at days after used a first site of timer), You can put weight at actual day and show it on graph.
  
+ ### Instalation
+ * Download repository, unpack and run tabataTimer.html in browser.
  Enjoy
  
  ### Zając Piotr
